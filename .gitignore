@@ -1,4 +1,5 @@
 /build/
-/.nb-gradle/private/
+/.nb-gradle/
 /.gradle/
 /.idea/
+/sales_and_tax.iml
