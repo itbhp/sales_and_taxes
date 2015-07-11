@@ -1,3 +1,4 @@
 /build/
 /.nb-gradle/private/
-/.gradle
+/.gradle/
+/.idea/
