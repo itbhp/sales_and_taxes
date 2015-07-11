@@ -14,14 +14,14 @@ import static org.hamcrest.CoreMatchers.is;
  * @author paolo
  */
 public class PriceParserTest {
-    private ProductParser underTest;
+    private CartItemParser underTest;
 
     private String input;
     private BigDecimal price;
 
     @Before
     public void setup(){
-        underTest = new ProductParser();
+        underTest = new CartItemParser();
     }
 
     @Test

@@ -12,7 +12,7 @@ import static it.twinsbrain.sales.and.taxes.cart.ProductType.OTHERS;
  *
  * @author paolo
  */
-public class ProductParser {
+public class CartItemParser {
 
     private String inputPattern = "(\\d+)\\s([\\w\\s]+)\\sat\\s(\\d+\\.\\d+)";
 

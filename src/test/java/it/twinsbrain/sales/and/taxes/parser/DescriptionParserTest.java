@@ -1,6 +1,5 @@
 package it.twinsbrain.sales.and.taxes.parser;
 
-import it.twinsbrain.sales.and.taxes.cart.ProductType;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -14,14 +13,14 @@ import static org.hamcrest.CoreMatchers.is;
  */
 public class DescriptionParserTest {
 
-    private ProductParser underTest;
+    private CartItemParser underTest;
 
     private String input;
     private String description;
 
     @Before
     public void setup(){
-        underTest = new ProductParser();
+        underTest = new CartItemParser();
     }
 
     @Test

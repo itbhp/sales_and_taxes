@@ -1,6 +1,6 @@
 package it.twinsbrain.sales.and.taxes.cart;
 
-import it.twinsbrain.sales.and.taxes.parser.ProductParser;
+import it.twinsbrain.sales.and.taxes.parser.CartItemParser;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -18,7 +18,7 @@ public class ShoppingCartTest {
 
     @Before
     public void setup(){
-        underTest = new ShoppingCart(new ProductParser());
+        underTest = new ShoppingCart(new CartItemParser());
     }
 
     @Test

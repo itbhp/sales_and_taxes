@@ -14,14 +14,14 @@ import static org.junit.Assert.assertThat;
  */
 public class ProductTypeParserTest {
     
-    private ProductParser underTest;
+    private CartItemParser underTest;
     
     private String input;
     private ProductType readProductType;
     
     @Before
     public void setup(){
-        underTest = new ProductParser();
+        underTest = new CartItemParser();
     }
     
     @Test

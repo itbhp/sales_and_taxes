@@ -16,14 +16,14 @@ public class QuantityParserTest {
     @Rule
     public ExpectedException exception = ExpectedException.none();
 
-    private ProductParser underTest;
+    private CartItemParser underTest;
 
     private String sampleInput;
     private int quantity;
 
     @Before
     public void setUp() {
-        underTest = new ProductParser();
+        underTest = new CartItemParser();
     }
 
     @Test
