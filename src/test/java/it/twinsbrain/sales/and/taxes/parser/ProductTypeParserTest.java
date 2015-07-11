@@ -1,11 +1,11 @@
 package it.twinsbrain.sales.and.taxes.parser;
 
-import static it.twinsbrain.sales.and.taxes.parser.ProductParser.ProdcutType.FOOD;
-import static org.hamcrest.CoreMatchers.is;
-import org.junit.Assert;
-import static org.junit.Assert.assertThat;
 import org.junit.Before;
 import org.junit.Test;
+
+import static it.twinsbrain.sales.and.taxes.parser.ProductParser.ProdcutType.*;
+import static org.hamcrest.CoreMatchers.is;
+import static org.junit.Assert.assertThat;
 
 /**
  *
@@ -46,6 +46,71 @@ public class ProductTypeParserTest {
         }
         then:{
             assertThat(readProdcutType, is(FOOD));
+        }
+    }
+
+    @Test
+    public void pills_are_medicine(){
+        given:{
+            input = "1 bottle of pills: 2.85";
+        }
+        when:{
+            readProdcutType = underTest.readProdcutType(input);
+        }
+        then:{
+            assertThat(readProdcutType, is(MEDICAL));
+        }
+    }
+
+    @Test
+    public void any_book_is_a_book(){
+        given:{
+            input = "1 Moccia's book: 0.00";
+        }
+        when:{
+            readProdcutType = underTest.readProdcutType(input);
+        }
+        then:{
+            assertThat(readProdcutType, is(BOOK));
+        }
+    }
+
+    @Test
+    public void a_cd_is_music(){
+        given:{
+            input = "1 AC/DC the gold collection cd: 20.00";
+        }
+        when:{
+            readProdcutType = underTest.readProdcutType(input);
+        }
+        then:{
+            assertThat(readProdcutType, is(MUSIC));
+        }
+    }
+
+    @Test
+    public void an_mp3_is_music(){
+        given:{
+            input = "1 Dire Straits - Walk of Life mp3: 0.99";
+        }
+        when:{
+            readProdcutType = underTest.readProdcutType(input);
+        }
+        then:{
+            assertThat(readProdcutType, is(MUSIC));
+        }
+    }
+
+    @Test
+    public void anythingelse_is_others(){
+        given:{
+            input = "1 tooth brush: 0.99";
+        }
+        when:{
+            readProdcutType = underTest.readProdcutType(input);
+        }
+        then:{
+            assertThat(readProdcutType, is(OTHERS));
         }
     }
 
