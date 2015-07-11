@@ -3,7 +3,7 @@ package it.twinsbrain.sales.and.taxes.parser;
 import org.junit.Before;
 import org.junit.Test;
 
-import static it.twinsbrain.sales.and.taxes.parser.ProductParser.ProdcutType.*;
+import static it.twinsbrain.sales.and.taxes.parser.ProductParser.ProductType.*;
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
 
@@ -16,7 +16,7 @@ public class ProductTypeParserTest {
     private ProductParser underTest;
     
     private String input;
-    private ProductParser.ProdcutType readProdcutType;
+    private ProductParser.ProductType readProductType;
     
     @Before
     public void setup(){
@@ -29,10 +29,10 @@ public class ProductTypeParserTest {
             input = "1 chocolate bar: 0.85";
         }
         when:{
-            readProdcutType = underTest.readProdcutType(input);
+            readProductType = underTest.readProductType(input);
         }
         then:{
-            assertThat(readProdcutType, is(FOOD));
+            assertThat(readProductType, is(FOOD));
         }
     }
     
@@ -42,10 +42,10 @@ public class ProductTypeParserTest {
             input = "1 bread pack 20 slices: 2.85";
         }
         when:{
-            readProdcutType = underTest.readProdcutType(input);
+            readProductType = underTest.readProductType(input);
         }
         then:{
-            assertThat(readProdcutType, is(FOOD));
+            assertThat(readProductType, is(FOOD));
         }
     }
 
@@ -55,10 +55,10 @@ public class ProductTypeParserTest {
             input = "1 bottle of pills: 2.85";
         }
         when:{
-            readProdcutType = underTest.readProdcutType(input);
+            readProductType = underTest.readProductType(input);
         }
         then:{
-            assertThat(readProdcutType, is(MEDICAL));
+            assertThat(readProductType, is(MEDICAL));
         }
     }
 
@@ -68,10 +68,10 @@ public class ProductTypeParserTest {
             input = "1 Moccia's book: 0.00";
         }
         when:{
-            readProdcutType = underTest.readProdcutType(input);
+            readProductType = underTest.readProductType(input);
         }
         then:{
-            assertThat(readProdcutType, is(BOOK));
+            assertThat(readProductType, is(BOOK));
         }
     }
 
@@ -81,10 +81,10 @@ public class ProductTypeParserTest {
             input = "1 AC/DC the gold collection cd: 20.00";
         }
         when:{
-            readProdcutType = underTest.readProdcutType(input);
+            readProductType = underTest.readProductType(input);
         }
         then:{
-            assertThat(readProdcutType, is(MUSIC));
+            assertThat(readProductType, is(MUSIC));
         }
     }
 
@@ -94,10 +94,10 @@ public class ProductTypeParserTest {
             input = "1 Dire Straits - Walk of Life mp3: 0.99";
         }
         when:{
-            readProdcutType = underTest.readProdcutType(input);
+            readProductType = underTest.readProductType(input);
         }
         then:{
-            assertThat(readProdcutType, is(MUSIC));
+            assertThat(readProductType, is(MUSIC));
         }
     }
 
@@ -107,10 +107,10 @@ public class ProductTypeParserTest {
             input = "1 tooth brush: 0.99";
         }
         when:{
-            readProdcutType = underTest.readProdcutType(input);
+            readProductType = underTest.readProductType(input);
         }
         then:{
-            assertThat(readProdcutType, is(OTHERS));
+            assertThat(readProductType, is(OTHERS));
         }
     }
 

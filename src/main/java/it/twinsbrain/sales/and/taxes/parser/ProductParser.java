@@ -1,10 +1,6 @@
 package it.twinsbrain.sales.and.taxes.parser;
 
-import static it.twinsbrain.sales.and.taxes.parser.ProductParser.ProdcutType.BOOK;
-import static it.twinsbrain.sales.and.taxes.parser.ProductParser.ProdcutType.FOOD;
-import static it.twinsbrain.sales.and.taxes.parser.ProductParser.ProdcutType.MEDICAL;
-import static it.twinsbrain.sales.and.taxes.parser.ProductParser.ProdcutType.MUSIC;
-import static it.twinsbrain.sales.and.taxes.parser.ProductParser.ProdcutType.OTHERS;
+import static it.twinsbrain.sales.and.taxes.parser.ProductParser.ProductType.OTHERS;
 import static java.util.Arrays.asList;
 import java.util.Collections;
 import java.util.List;
@@ -20,8 +16,8 @@ public class ProductParser {
         return Integer.parseInt(parts[0]);
     }
 
-    public ProdcutType readProdcutType(String input) {
-        for (ProdcutType type : ProdcutType.values()) {
+    public ProductType readProductType(String input) {
+        for (ProductType type : ProductType.values()) {
             if(type.match(input)){
                 return type;
             }
@@ -29,7 +25,7 @@ public class ProductParser {
         return OTHERS;
     }
 
-    public static enum ProdcutType {
+    public static enum ProductType {
 
         FOOD(asList("chocolate", "bread")),
         BOOK(asList("book")),
@@ -37,7 +33,7 @@ public class ProductParser {
         MEDICAL(asList("pills")),
         OTHERS(Collections.<String>emptyList());
 
-        ProdcutType(List<String> keywords) {
+        ProductType(List<String> keywords) {
             this.keywords = keywords;
         }
 
