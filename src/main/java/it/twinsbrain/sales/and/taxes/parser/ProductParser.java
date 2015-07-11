@@ -1,9 +1,10 @@
 package it.twinsbrain.sales.and.taxes.parser;
 
-import static it.twinsbrain.sales.and.taxes.parser.ProductParser.ProdcutType.OTHERS;
-import static java.util.Arrays.asList;
-import java.util.Collections;
-import java.util.List;
+import it.twinsbrain.sales.and.taxes.cart.ProductType;
+
+import java.math.BigDecimal;
+
+import static it.twinsbrain.sales.and.taxes.cart.ProductType.OTHERS;
 
 /**
  *
@@ -16,8 +17,8 @@ public class ProductParser {
         return Integer.parseInt(parts[0]);
     }
 
-    public ProdcutType readProdcutType(String input) {
-        for (ProdcutType type : ProdcutType.values()) {
+    public ProductType readProductType(String input) {
+        for (ProductType type : ProductType.values()) {
             if(type.match(input)){
                 return type;
             }
@@ -25,24 +26,11 @@ public class ProductParser {
         return OTHERS;
     }
 
-    public static enum ProdcutType {
-
-        FOOD(asList("chocolate", "bread")),
-        BOOK(asList("book")),
-        MUSIC(asList("cd", "mp3")),
-        MEDICAL(asList("pills")),
-        OTHERS(Collections.<String>emptyList());
-
-        ProdcutType(List<String> keywords) {
-            this.keywords = keywords;
-        }
-
-        private final List<String> keywords;
-
-        public boolean match(String productDescription) {
-            return keywords.stream().anyMatch((keyword) -> (productDescription.contains(keyword)));
-        }
-
+    public String readDescription(String input) {
+        return "";
     }
 
+    public BigDecimal readPrice(String input) {
+        return BigDecimal.ZERO;
+    }
 }
