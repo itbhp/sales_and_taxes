@@ -1,9 +1,5 @@
 package it.twinsbrain.sales.and.taxes.parser;
 
-import static it.twinsbrain.sales.and.taxes.parser.ProductParser.ProdcutType.BOOK;
-import static it.twinsbrain.sales.and.taxes.parser.ProductParser.ProdcutType.FOOD;
-import static it.twinsbrain.sales.and.taxes.parser.ProductParser.ProdcutType.MEDICAL;
-import static it.twinsbrain.sales.and.taxes.parser.ProductParser.ProdcutType.MUSIC;
 import static it.twinsbrain.sales.and.taxes.parser.ProductParser.ProdcutType.OTHERS;
 import static java.util.Arrays.asList;
 import java.util.Collections;
