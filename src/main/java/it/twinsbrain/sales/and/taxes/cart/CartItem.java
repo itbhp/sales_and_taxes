@@ -50,6 +50,7 @@ public class CartItem {
 
         public Builder withPrice(BigDecimal price){
             this.price = price;
+            this.priceWithTaxes = price;
             return this;
         }
 
