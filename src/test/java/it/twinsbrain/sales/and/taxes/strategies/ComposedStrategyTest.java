@@ -25,7 +25,7 @@ public class ComposedStrategyTest {
             item = new CartItem.Builder().withPrice(new BigDecimal("1.00")).build();
         }
         when:{
-            item = underTest.visit(item);
+            item = underTest.updateTaxesOn(item);
         }
         then:{
             assertThat("price should be five percent more", item.priceWithTaxes, is(equalTo(new BigDecimal("1.05"))));
@@ -40,7 +40,7 @@ public class ComposedStrategyTest {
             item = new CartItem.Builder().withPrice(new BigDecimal("27.99")).build();
         }
         when:{
-            item = underTest.visit(item);
+            item = underTest.updateTaxesOn(item);
         }
         then:{
             assertThat(item.priceWithTaxes, is(equalTo(new BigDecimal("32.19"))));

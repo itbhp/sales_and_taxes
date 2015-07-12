@@ -29,7 +29,7 @@ public class CartItem {
     }
 
     public CartItem accept(TaxStrategy visitor){
-        return visitor.visit(this);
+        return visitor.updateTaxesOn(this);
     }
     
     public static class Builder{

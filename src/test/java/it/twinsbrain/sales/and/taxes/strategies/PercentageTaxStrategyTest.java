@@ -22,7 +22,7 @@ public class PercentageTaxStrategyTest {
     public void setup(){
         underTest = new PercentageTaxStrategy() {
             @Override
-            public CartItem visit(CartItem visitee) {
+            public CartItem updateTaxesOn(CartItem visitee) {
                 return null;
             }
         };

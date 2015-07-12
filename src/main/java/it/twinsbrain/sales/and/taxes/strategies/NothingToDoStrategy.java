@@ -7,7 +7,7 @@ import it.twinsbrain.sales.and.taxes.cart.CartItem;
  */
 public class NothingToDoStrategy implements TaxStrategy {
     @Override
-    public CartItem visit(CartItem visitee) {
+    public CartItem updateTaxesOn(CartItem visitee) {
         return visitee;
     }
 }

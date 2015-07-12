@@ -31,7 +31,7 @@ public class BaseTaxStrategyTest {
         }
 
         when:{
-            item = underTest.visit(item);
+            item = underTest.updateTaxesOn(item);
         }
 
         then:{

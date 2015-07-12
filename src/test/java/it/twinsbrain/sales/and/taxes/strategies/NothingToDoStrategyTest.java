@@ -30,7 +30,7 @@ public class NothingToDoStrategyTest {
             item = new CartItem.Builder().withPrice(new BigDecimal("1.99")).build();
         }
         when:{
-            item = underTest.visit(item);
+            item = underTest.updateTaxesOn(item);
         }
         then:{
             assertThat(item.priceWithTaxes, is(equalTo(item.price)));

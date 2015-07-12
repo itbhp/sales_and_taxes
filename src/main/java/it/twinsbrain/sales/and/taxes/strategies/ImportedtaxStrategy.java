@@ -7,7 +7,7 @@ import it.twinsbrain.sales.and.taxes.cart.CartItem;
  */
 public class ImportedTaxStrategy extends PercentageTaxStrategy{
     @Override
-    public CartItem visit(CartItem visitee) {
+    public CartItem updateTaxesOn(CartItem visitee) {
         String taxPercentage = "0.05";
         return applyPercentageTax(visitee, taxPercentage);
     }
