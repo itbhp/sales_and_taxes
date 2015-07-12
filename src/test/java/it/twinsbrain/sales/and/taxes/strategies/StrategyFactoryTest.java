@@ -1,9 +1,6 @@
 package it.twinsbrain.sales.and.taxes.strategies;
 
 import it.twinsbrain.sales.and.taxes.cart.CartItem;
-import it.twinsbrain.sales.and.taxes.cart.ProductType;
-import org.hamcrest.CoreMatchers;
-import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -11,9 +8,7 @@ import java.math.BigDecimal;
 
 import static it.twinsbrain.sales.and.taxes.cart.ProductType.MEDICAL;
 import static it.twinsbrain.sales.and.taxes.cart.ProductType.MUSIC;
-import static org.hamcrest.CoreMatchers.equalTo;
-import static org.hamcrest.CoreMatchers.instanceOf;
-import static org.hamcrest.CoreMatchers.is;
+import static org.hamcrest.CoreMatchers.*;
 import static org.junit.Assert.assertThat;
 
 /**
