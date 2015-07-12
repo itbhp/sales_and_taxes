@@ -15,19 +15,21 @@ public class CartItem {
     public final BigDecimal price;
     public final String description;
     public final BigDecimal taxes;
+    public final BigDecimal taxPercentage;
     public final BigDecimal priceWithTaxes;
     
-    private CartItem(ProductType type, int quantity, BigDecimal price, String description, BigDecimal taxes, BigDecimal priceWithTaxes) {
+    private CartItem(ProductType type, int quantity, BigDecimal price, String description, BigDecimal taxes, BigDecimal taxPercentage, BigDecimal priceWithTaxes) {
         this.type = type;
         this.quantity = quantity;
         this.price = price;
         this.description = description;
         this.taxes = taxes;
+        this.taxPercentage = taxPercentage;
         this.priceWithTaxes = priceWithTaxes;
     }
 
     public CartItem accept(TaxStrategy visitor){
-        return visitor.updateItemWithTaxes(this);
+        return visitor.visit(this);
     }
     
     public static class Builder{
@@ -36,6 +38,7 @@ public class CartItem {
         private BigDecimal price = BigDecimal.ZERO;
         private String description;
         private BigDecimal taxes = BigDecimal.ZERO;
+        private BigDecimal taxPercentage = BigDecimal.ZERO;
         private BigDecimal priceWithTaxes = BigDecimal.ZERO;
 
         public Builder withType(ProductType type){
@@ -64,13 +67,18 @@ public class CartItem {
             return this;
         }
 
+        public Builder withTaxPercentage(BigDecimal taxPercentage){
+            this.taxPercentage = taxPercentage;
+            return this;
+        }
+
         public Builder withPriceWithTaxes(BigDecimal price){
             this.priceWithTaxes = price;
             return this;
         }
 
         public CartItem build(){
-            return new CartItem(type,quantity,price,description,taxes,priceWithTaxes);
+            return new CartItem(type,quantity,price,description,taxes, taxPercentage, priceWithTaxes);
         }
     }
 

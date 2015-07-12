@@ -14,21 +14,24 @@ import java.util.List;
 public class ShoppingCart {
 
     private CartItemParser parser;
+    private TaxStrategyFactory taxStrategyFactory;
+
     private List<CartItem> items;
 
-    public ShoppingCart(CartItemParser parser) {
+    public ShoppingCart(CartItemParser parser, TaxStrategyFactory taxStrategyFactory) {
         this.parser = parser;
+        this.taxStrategyFactory = taxStrategyFactory;
         this.items = new LinkedList<>();
     }
 
-    protected void read(String input) {
+    protected void createCartItemsFrom(String input) {
         String[] lines = input.split("\n");
         for (String line : lines) {
             items.add(createCartItemFrom(line));
         }
     }
 
-    protected List<CartItem> list() {
+    protected List<CartItem> listInputItems() {
         return Collections.unmodifiableList(items);
     }
 
@@ -46,12 +49,13 @@ public class ShoppingCart {
     }
 
     public String receipt(String order){
-        read(order);
+        createCartItemsFrom(order);
         String receipt = "";
         BigDecimal taxesSum = BigDecimal.ZERO;
         BigDecimal totalPrice = BigDecimal.ZERO;
+
         for(CartItem item: items){
-            CartItem itemWithTax = item.accept(TaxStrategyFactory.createFrom(item));
+            CartItem itemWithTax = item.accept(taxStrategyFactory.createFrom(item));
             receipt += createReceiptForItem(itemWithTax);
             receipt += "\n";
             taxesSum = taxesSum.add(itemWithTax.taxes);

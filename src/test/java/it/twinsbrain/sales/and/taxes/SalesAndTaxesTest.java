@@ -3,6 +3,7 @@ package it.twinsbrain.sales.and.taxes;
 
 import it.twinsbrain.sales.and.taxes.cart.ShoppingCart;
 import it.twinsbrain.sales.and.taxes.parser.CartItemParser;
+import it.twinsbrain.sales.and.taxes.strategies.TaxStrategyFactory;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -75,7 +76,7 @@ public class SalesAndTaxesTest {
 
     @Before
     public void setup() {
-        underTest = new ShoppingCart(new CartItemParser());
+        underTest = new ShoppingCart(new CartItemParser(), new TaxStrategyFactory());
     }
 
     @Test

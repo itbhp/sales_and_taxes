@@ -16,7 +16,7 @@ public class ComposedStrategy implements TaxStrategy {
 
 
     @Override
-    public CartItem updateItemWithTaxes(CartItem visitee) {
-        return next.updateItemWithTaxes(current.updateItemWithTaxes(visitee));
+    public CartItem visit(CartItem visitee) {
+        return next.visit(current.visit(visitee));
     }
 }

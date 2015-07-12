@@ -1,7 +1,6 @@
 package it.twinsbrain.sales.and.taxes.strategies;
 
 import it.twinsbrain.sales.and.taxes.cart.CartItem;
-import org.junit.Before;
 import org.junit.Test;
 
 import java.math.BigDecimal;
@@ -26,26 +25,13 @@ public class ComposedStrategyTest {
             item = new CartItem.Builder().withPrice(new BigDecimal("1.00")).build();
         }
         when:{
-            item = underTest.updateItemWithTaxes(item);
+            item = underTest.visit(item);
         }
         then:{
             assertThat("price should be five percent more", item.priceWithTaxes, is(equalTo(new BigDecimal("1.05"))));
         }
     }
 
-    @Test
-    public void itShouldApplyBothTaxes(){
-        given: {
-            underTest = new ComposedStrategy(new ImportedTaxStrategy(), new BaseTaxStrategy());
-            item = new CartItem.Builder().withPrice(new BigDecimal("1.00")).build();
-        }
-        when:{
-            item = underTest.updateItemWithTaxes(item);
-        }
-        then:{
-            assertThat(item.priceWithTaxes, is(equalTo(new BigDecimal("1.16"))));
-        }
-    }
 
     @Test
     public void importedBottleOfPerfume(){
@@ -54,10 +40,10 @@ public class ComposedStrategyTest {
             item = new CartItem.Builder().withPrice(new BigDecimal("27.99")).build();
         }
         when:{
-            item = underTest.updateItemWithTaxes(item);
+            item = underTest.visit(item);
         }
         then:{
-            assertThat(item.priceWithTaxes, is(equalTo(new BigDecimal("32.33"))));
+            assertThat(item.priceWithTaxes, is(equalTo(new BigDecimal("32.19"))));
         }
     }
 }

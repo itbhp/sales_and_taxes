@@ -1,7 +1,6 @@
 package it.twinsbrain.sales.and.taxes.strategies;
 
 import it.twinsbrain.sales.and.taxes.cart.CartItem;
-import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -31,7 +30,7 @@ public class NothingToDoStrategyTest {
             item = new CartItem.Builder().withPrice(new BigDecimal("1.99")).build();
         }
         when:{
-            item = underTest.updateItemWithTaxes(item);
+            item = underTest.visit(item);
         }
         then:{
             assertThat(item.priceWithTaxes, is(equalTo(item.price)));

@@ -1,7 +1,6 @@
 package it.twinsbrain.sales.and.taxes.strategies;
 
 import it.twinsbrain.sales.and.taxes.cart.CartItem;
-import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -31,10 +30,23 @@ public class ImportedTaxStrategyTest {
             item = new CartItem.Builder().withPrice(new BigDecimal("27.99")).build();
         }
         when:{
-            item = underTest.updateItemWithTaxes(item);
+            item = underTest.visit(item);
         }
         then:{
-            assertThat("price should be five percent more", item.priceWithTaxes, is(equalTo(new BigDecimal("32.33"))));
+            assertThat("price should be five percent more", item.priceWithTaxes, is(equalTo(new BigDecimal("29.39"))));
+        }
+    }
+
+    @Test
+    public void imported_chocolate(){
+        given:{
+            item = new CartItem.Builder().withPrice(new BigDecimal("11.25")).build();
+        }
+        when:{
+            item = underTest.visit(item);
+        }
+        then:{
+            assertThat("price should be five percent more", item.priceWithTaxes, is(equalTo(new BigDecimal("11.85"))));
         }
     }
 }

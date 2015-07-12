@@ -22,7 +22,7 @@ public class PercentageTaxStrategyTest {
     public void setup(){
         underTest = new PercentageTaxStrategy() {
             @Override
-            public CartItem updateItemWithTaxes(CartItem visitee) {
+            public CartItem visit(CartItem visitee) {
                 return null;
             }
         };
@@ -37,7 +37,7 @@ public class PercentageTaxStrategyTest {
             item = underTest.applyPercentageTax(item, "0.1");
         }
         then:{
-            assertThat(item.priceWithTaxes, is(equalTo(new BigDecimal("1.71"))));
+            assertThat(item.priceWithTaxes, is(equalTo(new BigDecimal("1.71")))); //1.705 -> ceil up
         }
     }
 
@@ -50,7 +50,7 @@ public class PercentageTaxStrategyTest {
             item = underTest.applyPercentageTax(item, "0.1");
         }
         then:{
-            assertThat(item.priceWithTaxes, is(equalTo(new BigDecimal("1.69"))));
+            assertThat(item.priceWithTaxes, is(equalTo(new BigDecimal("1.70")))); //1.694 -> ceil up
         }
     }
 

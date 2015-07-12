@@ -1,6 +1,7 @@
 package it.twinsbrain.sales.and.taxes.cart;
 
 import it.twinsbrain.sales.and.taxes.parser.CartItemParser;
+import it.twinsbrain.sales.and.taxes.strategies.TaxStrategyFactory;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -24,7 +25,7 @@ public class ShoppingCartTest {
 
     @Before
     public void setup(){
-        underTest = new ShoppingCart(new CartItemParser());
+        underTest = new ShoppingCart(new CartItemParser(), new TaxStrategyFactory());
     }
 
     @Test
@@ -33,10 +34,10 @@ public class ShoppingCartTest {
             input = "1 music cd at 12.99";
         }
         when:{
-            underTest.read(input);
+            underTest.createCartItemsFrom(input);
         }
         then:{
-            List<CartItem> cartItems = underTest.list();
+            List<CartItem> cartItems = underTest.listInputItems();
             assertThat(cartItems.size(), is(1));
 
             CartItem cartItem = cartItems.get(0);
@@ -53,10 +54,10 @@ public class ShoppingCartTest {
             input = "1 music cd at 12.99\n1 Harry Potter book at 25.99";
         }
         when:{
-            underTest.read(input);
+            underTest.createCartItemsFrom(input);
         }
         then:{
-            List<CartItem> cartItems = underTest.list();
+            List<CartItem> cartItems = underTest.listInputItems();
             assertThat(cartItems.size(), is(2));
 
             CartItem cartItem1 = cartItems.get(0);

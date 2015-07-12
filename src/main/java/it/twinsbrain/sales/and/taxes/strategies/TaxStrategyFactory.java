@@ -14,9 +14,9 @@ import static java.util.Collections.unmodifiableList;
  */
 public class TaxStrategyFactory {
 
-    private static List<ProductType> taxExcluded = unmodifiableList(asList(BOOK, FOOD, MEDICAL));
+    private List<ProductType> taxExcluded = unmodifiableList(asList(BOOK, FOOD, MEDICAL));
 
-    public static TaxStrategy createFrom(CartItem item){
+    public TaxStrategy createFrom(CartItem item){
         boolean isImported = item.description.contains("imported");
         if(isImported){
             if(taxExcluded.contains(item.type)){

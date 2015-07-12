@@ -8,5 +8,5 @@ import it.twinsbrain.sales.and.taxes.cart.CartItem;
  */
 public interface TaxStrategy {
 
-    CartItem updateItemWithTaxes(CartItem visitee);
+    CartItem visit(CartItem visitee);
 }
