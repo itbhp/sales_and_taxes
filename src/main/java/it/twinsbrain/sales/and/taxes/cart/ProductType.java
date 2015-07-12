@@ -6,6 +6,7 @@ import java.util.List;
 import static java.util.Arrays.asList;
 
 /**
+ *
  * @author angelosciarra
  */
 public enum ProductType {

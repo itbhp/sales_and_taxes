@@ -34,7 +34,12 @@ public class ShoppingCart {
         int quantity = parser.readQuantity(input);
         ProductType type = parser.readProductType(input);
         BigDecimal price = parser.readPrice(input);
-        return new CartItem(type, quantity, price, description);
+        return new CartItem.Builder()
+                .withType(type)
+                .withQuantity(quantity)
+                .withPrice(price)
+                .withDescription(description)
+                .build();
     }
 
 
