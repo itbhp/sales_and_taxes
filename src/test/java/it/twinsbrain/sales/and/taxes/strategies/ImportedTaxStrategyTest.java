@@ -28,13 +28,13 @@ public class ImportedTaxStrategyTest {
     @Test
     public void itShouldApplyFivePercentTax(){
         given:{
-            item = new CartItem.Builder().withPrice(new BigDecimal("1.00")).build();
+            item = new CartItem.Builder().withPrice(new BigDecimal("27.99")).build();
         }
         when:{
             item = underTest.updateItemWithTaxes(item);
         }
         then:{
-            assertThat("price should be five percent more", item.priceWithTaxes, is(equalTo(new BigDecimal("1.05"))));
+            assertThat("price should be five percent more", item.priceWithTaxes, is(equalTo(new BigDecimal("32.33"))));
         }
     }
 }

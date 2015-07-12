@@ -24,7 +24,7 @@ public enum ProductType {
     private final List<String> keywords;
 
     public boolean match(String productDescription) {
-        return keywords.stream().anyMatch((keyword) -> (productDescription.contains(keyword)));
+        return keywords.stream().anyMatch((keyword) -> (productDescription.toLowerCase().contains(keyword.toLowerCase())));
     }
 
 }

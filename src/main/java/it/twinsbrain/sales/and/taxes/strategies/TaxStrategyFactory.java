@@ -12,7 +12,7 @@ import static java.util.Collections.unmodifiableList;
 /**
  * @author paolo
  */
-public class StrategyFactory {
+public class TaxStrategyFactory {
 
     private static List<ProductType> taxExcluded = unmodifiableList(asList(BOOK, FOOD, MEDICAL));
 

@@ -6,8 +6,8 @@ import it.twinsbrain.sales.and.taxes.cart.CartItem;
  * @author paolo
  */
 public class ComposedStrategy implements TaxStrategy {
-    private final TaxStrategy current;
-    private final TaxStrategy next;
+    public final TaxStrategy current;
+    public final TaxStrategy next;
 
     public ComposedStrategy(TaxStrategy current, TaxStrategy next){
         this.current = current;

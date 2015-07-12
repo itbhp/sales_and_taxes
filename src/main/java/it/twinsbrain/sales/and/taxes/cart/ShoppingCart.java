@@ -1,6 +1,7 @@
 package it.twinsbrain.sales.and.taxes.cart;
 
 import it.twinsbrain.sales.and.taxes.parser.CartItemParser;
+import it.twinsbrain.sales.and.taxes.strategies.TaxStrategyFactory;
 
 import java.math.BigDecimal;
 import java.util.Collections;
@@ -8,7 +9,6 @@ import java.util.LinkedList;
 import java.util.List;
 
 /**
- *
  * @author paolo
  */
 public class ShoppingCart {
@@ -21,11 +21,14 @@ public class ShoppingCart {
         this.items = new LinkedList<>();
     }
 
-    public void read(String input) {
-        items.add(createCartItemFrom(input));
+    protected void read(String input) {
+        String[] lines = input.split("\n");
+        for (String line : lines) {
+            items.add(createCartItemFrom(line));
+        }
     }
 
-    public List<CartItem> list() {
+    protected List<CartItem> list() {
         return Collections.unmodifiableList(items);
     }
 
@@ -40,6 +43,27 @@ public class ShoppingCart {
                 .withPrice(price)
                 .withDescription(description)
                 .build();
+    }
+
+    public String receipt(String order){
+        read(order);
+        String receipt = "";
+        BigDecimal taxesSum = BigDecimal.ZERO;
+        BigDecimal totalPrice = BigDecimal.ZERO;
+        for(CartItem item: items){
+            CartItem itemWithTax = item.accept(TaxStrategyFactory.createFrom(item));
+            receipt += createReceiptForItem(itemWithTax);
+            receipt += "\n";
+            taxesSum = taxesSum.add(itemWithTax.taxes);
+            totalPrice = totalPrice.add(itemWithTax.priceWithTaxes);
+        }
+        receipt += "Sales Taxes: "+taxesSum.setScale(2,BigDecimal.ROUND_HALF_UP)+"\n";
+        receipt += "Total: "+totalPrice.setScale(2,BigDecimal.ROUND_HALF_UP);
+        return receipt;
+    }
+
+    private String createReceiptForItem(CartItem item) {
+        return item.quantity + " " + item.description+ ": "+item.priceWithTaxes;
     }
 
 
