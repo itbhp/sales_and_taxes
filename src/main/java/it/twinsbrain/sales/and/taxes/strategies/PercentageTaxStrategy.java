@@ -1,7 +1,7 @@
 package it.twinsbrain.sales.and.taxes.strategies;
 
 import it.twinsbrain.sales.and.taxes.cart.CartItem;
-import it.twinsbrain.sales.and.taxes.math.Rounded;
+import it.twinsbrain.sales.and.taxes.math.RoundedDecimal;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
@@ -15,7 +15,7 @@ public abstract class PercentageTaxStrategy implements TaxStrategy {
 
     protected CartItem applyPercentageTax(CartItem visitee, String taxPercentage) {
         BigDecimal rate = new BigDecimal(taxPercentage);
-        BigDecimal taxes = new Rounded(visitee.price.multiply(rate), "5", "100").getValue();
+        BigDecimal taxes = new RoundedDecimal(visitee.price.multiply(rate), "5", "100").getValue();
         BigDecimal priceWithTaxes = visitee.priceWithTaxes.add(taxes);
 
         return new CartItem.Builder()

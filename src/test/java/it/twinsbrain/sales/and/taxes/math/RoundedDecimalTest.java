@@ -11,9 +11,9 @@ import static org.junit.Assert.assertThat;
 /**
  * @author angelosciarra
  */
-public class RoundedTest {
+public class RoundedDecimalTest {
 
-    private Rounded underTest;
+    private RoundedDecimal underTest;
     private BigDecimal input;
 
 
@@ -25,7 +25,7 @@ public class RoundedTest {
         }
         when:
         {
-            underTest = new Rounded(input, "2", "100");
+            underTest = new RoundedDecimal(input, "2", "100");
         }
         then:
         {
@@ -41,7 +41,7 @@ public class RoundedTest {
         }
         when:
         {
-            underTest = new Rounded(input, "5", "100");
+            underTest = new RoundedDecimal(input, "5", "100");
         }
         then:
         {
