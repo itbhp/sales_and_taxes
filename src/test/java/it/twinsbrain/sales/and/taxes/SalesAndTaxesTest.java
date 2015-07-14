@@ -2,6 +2,7 @@ package it.twinsbrain.sales.and.taxes;
 
 
 import it.twinsbrain.sales.and.taxes.cart.ShoppingCart;
+import it.twinsbrain.sales.and.taxes.cart.ShoppingCartBuilder;
 import it.twinsbrain.sales.and.taxes.parser.CartItemParser;
 import it.twinsbrain.sales.and.taxes.strategies.TaxStrategyFactory;
 import org.junit.Before;
@@ -71,23 +72,18 @@ import static org.junit.Assert.assertThat;
 public class SalesAndTaxesTest {
 
     ShoppingCart underTest;
-    private String input;
     private String output;
-
-    @Before
-    public void setup() {
-        underTest = new ShoppingCart(new CartItemParser(), new TaxStrategyFactory());
-    }
 
     @Test
     public void acceptanceTestOne() throws IOException {
         given:
         {
-            input = readTextFile("src/test/resources/inputs/one.txt");
+            underTest = new ShoppingCartBuilder(new CartItemParser(), new TaxStrategyFactory())
+                    .createShoppingCartFrom(readTextFile("src/test/resources/inputs/one.txt"));
         }
         when:
         {
-            output = underTest.createFrom(input).toReceipt().print();
+            output = underTest.toReceipt().print();
         }
         then:
         {
@@ -99,11 +95,12 @@ public class SalesAndTaxesTest {
     public void acceptanceTestTwo() throws IOException {
         given:
         {
-            input = readTextFile("src/test/resources/inputs/two.txt");
+            underTest = new ShoppingCartBuilder(new CartItemParser(), new TaxStrategyFactory())
+                    .createShoppingCartFrom(readTextFile("src/test/resources/inputs/two.txt"));
         }
         when:
         {
-            output = underTest.createFrom(input).toReceipt().print();
+            output = underTest.toReceipt().print();
         }
         then:
         {
@@ -115,11 +112,12 @@ public class SalesAndTaxesTest {
     public void acceptanceTestThree() throws IOException {
         given:
         {
-            input = readTextFile("src/test/resources/inputs/three.txt");
+            underTest = new ShoppingCartBuilder(new CartItemParser(), new TaxStrategyFactory())
+                    .createShoppingCartFrom(readTextFile("src/test/resources/inputs/three.txt"));
         }
         when:
         {
-            output = underTest.createFrom(input).toReceipt().print();
+            output = underTest.toReceipt().print();
         }
         then:
         {

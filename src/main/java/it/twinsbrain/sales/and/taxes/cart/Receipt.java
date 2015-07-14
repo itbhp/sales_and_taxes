@@ -21,7 +21,6 @@ public class Receipt {
         BigDecimal taxesSum = BigDecimal.ZERO;
         BigDecimal totalPrice = BigDecimal.ZERO;
         for(CartItem itemWithTax: itemsWithTaxes){
-
             receipt += createReceiptForItem(itemWithTax);
             taxesSum = taxesSum.add(itemWithTax.taxes);
             totalPrice = totalPrice.add(itemWithTax.priceWithTaxes);

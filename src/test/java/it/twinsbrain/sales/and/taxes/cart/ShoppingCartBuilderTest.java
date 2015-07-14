@@ -18,14 +18,15 @@ import static org.junit.Assert.assertThat;
  *
  * @author paolo
  */
-public class ShoppingCartTest {
+public class ShoppingCartBuilderTest {
 
-    private ShoppingCart underTest;
+    private ShoppingCartBuilder underTest;
     private String input;
+    private ShoppingCart shoppingCart;
 
     @Before
     public void setup(){
-        underTest = new ShoppingCart(new CartItemParser(), new TaxStrategyFactory());
+        underTest = new ShoppingCartBuilder(new CartItemParser(),new TaxStrategyFactory());
     }
 
     @Test
@@ -34,10 +35,10 @@ public class ShoppingCartTest {
             input = "1 music cd at 12.99";
         }
         when:{
-            underTest.createFrom(input);
+            shoppingCart = underTest.createShoppingCartFrom(input);
         }
         then:{
-            List<CartItem> cartItems = underTest.listInputItems();
+            List<CartItem> cartItems = shoppingCart.listInputItems();
             assertThat(cartItems.size(), is(1));
 
             CartItem cartItem = cartItems.get(0);
@@ -54,10 +55,10 @@ public class ShoppingCartTest {
             input = "1 music cd at 12.99\n1 Harry Potter book at 25.99";
         }
         when:{
-            underTest.createFrom(input);
+            shoppingCart = underTest.createShoppingCartFrom(input);
         }
         then:{
-            List<CartItem> cartItems = underTest.listInputItems();
+            List<CartItem> cartItems = shoppingCart.listInputItems();
             assertThat(cartItems.size(), is(2));
 
             CartItem cartItem1 = cartItems.get(0);

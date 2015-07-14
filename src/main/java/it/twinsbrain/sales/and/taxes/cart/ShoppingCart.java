@@ -13,49 +13,28 @@ import java.util.List;
  */
 public class ShoppingCart {
 
-    private CartItemParser parser;
+    private List<CartItem> items;
     private TaxStrategyFactory taxStrategyFactory;
 
-    private List<CartItem> items;
-
-    public ShoppingCart(CartItemParser parser, TaxStrategyFactory taxStrategyFactory) {
-        this.parser = parser;
+    public ShoppingCart(TaxStrategyFactory taxStrategyFactory) {
         this.taxStrategyFactory = taxStrategyFactory;
         this.items = new LinkedList<>();
-    }
-    public ShoppingCart createFrom(String order) {
-        String[] orderItems = order.split("\n");
-        for (String orderItem : orderItems) {
-            items.add(createCartItemFrom(orderItem));
-        }
-        return this;
     }
 
     protected List<CartItem> listInputItems() {
         return Collections.unmodifiableList(items);
     }
 
-    private CartItem createCartItemFrom(String input) {
-        String description = parser.readDescription(input);
-        int quantity = parser.readQuantity(input);
-        ProductType type = parser.readProductType(input);
-        BigDecimal price = parser.readPrice(input);
-        return new CartItem.Builder()
-                .withType(type)
-                .withQuantity(quantity)
-                .withPrice(price)
-                .withDescription(description)
-                .build();
-    }
-
-    public Receipt toReceipt(){
+    public Receipt toReceipt() {
         List<CartItem> itemsWithTaxes = new LinkedList<>();
-
-        for(CartItem item: items){
+        for (CartItem item : items) {
             CartItem itemWithTax = item.accept(taxStrategyFactory.createFrom(item));
             itemsWithTaxes.add(itemWithTax);
         }
-
         return new Receipt(itemsWithTaxes);
+    }
+
+    public void add(CartItem item) {
+        items.add(item);
     }
 }
