@@ -87,7 +87,7 @@ public class SalesAndTaxesTest {
         }
         when:
         {
-            output = underTest.receipt(input);
+            output = underTest.createFrom(input).toReceipt().print();
         }
         then:
         {
@@ -103,7 +103,7 @@ public class SalesAndTaxesTest {
         }
         when:
         {
-            output = underTest.receipt(input);
+            output = underTest.createFrom(input).toReceipt().print();
         }
         then:
         {
@@ -119,7 +119,7 @@ public class SalesAndTaxesTest {
         }
         when:
         {
-            output = underTest.receipt(input);
+            output = underTest.createFrom(input).toReceipt().print();
         }
         then:
         {

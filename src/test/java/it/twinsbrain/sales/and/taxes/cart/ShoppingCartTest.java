@@ -34,7 +34,7 @@ public class ShoppingCartTest {
             input = "1 music cd at 12.99";
         }
         when:{
-            underTest.createCartItemsFrom(input);
+            underTest.createFrom(input);
         }
         then:{
             List<CartItem> cartItems = underTest.listInputItems();
@@ -54,7 +54,7 @@ public class ShoppingCartTest {
             input = "1 music cd at 12.99\n1 Harry Potter book at 25.99";
         }
         when:{
-            underTest.createCartItemsFrom(input);
+            underTest.createFrom(input);
         }
         then:{
             List<CartItem> cartItems = underTest.listInputItems();
