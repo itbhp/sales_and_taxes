@@ -31,7 +31,12 @@ public class CartItem {
     public CartItem accept(TaxStrategy visitor){
         return visitor.updateTaxesOn(this);
     }
-    
+
+    @Override
+    public String toString() {
+        return quantity + " " + description+ ": "+priceWithTaxes;
+    }
+
     public static class Builder{
         private ProductType type;
         private int quantity = 0;
