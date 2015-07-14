@@ -1,9 +1,7 @@
 package it.twinsbrain.sales.and.taxes.cart;
 
-import it.twinsbrain.sales.and.taxes.parser.CartItemParser;
 import it.twinsbrain.sales.and.taxes.strategies.TaxStrategyFactory;
 
-import java.math.BigDecimal;
 import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;

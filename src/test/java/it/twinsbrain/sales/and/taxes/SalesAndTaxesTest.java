@@ -5,7 +5,6 @@ import it.twinsbrain.sales.and.taxes.cart.ShoppingCart;
 import it.twinsbrain.sales.and.taxes.cart.ShoppingCartBuilder;
 import it.twinsbrain.sales.and.taxes.parser.CartItemParser;
 import it.twinsbrain.sales.and.taxes.strategies.TaxStrategyFactory;
-import org.junit.Before;
 import org.junit.Test;
 
 import java.io.IOException;
