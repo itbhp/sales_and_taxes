@@ -1,9 +1,9 @@
 package it.twinsbrain.sales.and.taxes.strategies;
 
 import it.twinsbrain.sales.and.taxes.cart.CartItem;
+import it.twinsbrain.sales.and.taxes.math.Rounded;
 
 import java.math.BigDecimal;
-import java.math.MathContext;
 import java.math.RoundingMode;
 
 /**
@@ -14,21 +14,22 @@ public abstract class PercentageTaxStrategy implements TaxStrategy {
     private int scale = 2;
 
     protected CartItem applyPercentageTax(CartItem visitee, String taxPercentage) {
-        BigDecimal rate = visitee.taxPercentage.add(new BigDecimal(taxPercentage));
-        BigDecimal taxes = visitee.price.multiply(rate);
-        BigDecimal priceWithTaxes = visitee.price.add(taxes);
-
+        BigDecimal rate = new BigDecimal(taxPercentage);
+        BigDecimal taxes = new Rounded(visitee.price.multiply(rate), "5", "100").getValue();
+        BigDecimal priceWithTaxes = visitee.priceWithTaxes.add(taxes);
 
         return new CartItem.Builder()
                 .withType(visitee.type)
                 .withQuantity(visitee.quantity)
                 .withPrice(visitee.price)
                 .withDescription(visitee.description)
-                .withTaxes(taxes.setScale(scale,roundingMode))
-                .withPriceWithTaxes(priceWithTaxes.setScale(scale,roundingMode))
-                .withTaxPercentage(rate.setScale(scale,roundingMode))
+                .withTaxes(taxes.add(visitee.taxes).setScale(scale, roundingMode))
+                .withPriceWithTaxes(priceWithTaxes.setScale(scale, roundingMode))
+                .withTaxPercentage(rate.add(visitee.taxPercentage).setScale(scale, roundingMode))
                 .build();
     }
+
+
 
 
 }
