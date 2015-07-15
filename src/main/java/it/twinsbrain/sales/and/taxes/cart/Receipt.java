@@ -3,9 +3,6 @@ package it.twinsbrain.sales.and.taxes.cart;
 import java.math.BigDecimal;
 import java.util.List;
 
-/**
- * @author paolo
- */
 public class Receipt {
 
     private List<CartItem> itemsWithTaxes;

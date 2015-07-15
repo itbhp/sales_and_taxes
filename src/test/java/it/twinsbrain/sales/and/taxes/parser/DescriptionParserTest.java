@@ -7,10 +7,6 @@ import org.junit.Test;
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.CoreMatchers.is;
 
-/**
- *
- * @author paolo
- */
 public class DescriptionParserTest {
 
     private CartItemParser underTest;

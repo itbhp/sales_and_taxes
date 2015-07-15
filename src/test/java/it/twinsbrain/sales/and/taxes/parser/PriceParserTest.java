@@ -9,10 +9,6 @@ import java.math.BigDecimal;
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.CoreMatchers.is;
 
-/**
- *
- * @author paolo
- */
 public class PriceParserTest {
     private CartItemParser underTest;
 

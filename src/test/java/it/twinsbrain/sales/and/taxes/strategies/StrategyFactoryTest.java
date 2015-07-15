@@ -13,10 +13,6 @@ import static org.hamcrest.CoreMatchers.instanceOf;
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
 
-/**
- *
- * @author paolo
- */
 public class StrategyFactoryTest {
 
     private TaxStrategyFactory underTest;

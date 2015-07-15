@@ -8,10 +8,6 @@ import static it.twinsbrain.sales.and.taxes.cart.ProductType.*;
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
 
-/**
- *
- * @author paolo
- */
 public class ProductTypeParserTest {
     
     private CartItemParser underTest;

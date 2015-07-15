@@ -6,9 +6,6 @@ import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
 
-/**
- * @author paolo
- */
 public class ShoppingCart {
 
     private List<CartItem> items;

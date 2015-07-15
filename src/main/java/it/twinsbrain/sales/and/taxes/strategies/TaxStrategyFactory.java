@@ -9,9 +9,6 @@ import static it.twinsbrain.sales.and.taxes.cart.ProductType.*;
 import static java.util.Arrays.asList;
 import static java.util.Collections.unmodifiableList;
 
-/**
- * @author paolo
- */
 public class TaxStrategyFactory {
 
     private List<ProductType> taxExcluded = unmodifiableList(asList(BOOK, FOOD, MEDICAL));
@@ -31,7 +28,5 @@ public class TaxStrategyFactory {
                 return new BaseTaxStrategy();
             }
         }
-
-
     }
 }

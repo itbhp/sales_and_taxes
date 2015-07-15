@@ -8,9 +8,6 @@ import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
 
-/**
- * @author angelosciarra
- */
 public class RoundedDecimalTest {
 
     private RoundedDecimal underTest;

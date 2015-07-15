@@ -6,9 +6,6 @@ import it.twinsbrain.sales.and.taxes.math.RoundedDecimal;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 
-/**
- * @author paolo
- */
 public abstract class PercentageTaxStrategy implements TaxStrategy {
     private RoundingMode roundingMode = RoundingMode.CEILING;
     private int scale = 2;

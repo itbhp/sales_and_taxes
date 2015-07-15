@@ -5,9 +5,6 @@ import it.twinsbrain.sales.and.taxes.strategies.TaxStrategyFactory;
 
 import java.math.BigDecimal;
 
-/**
- * @author paolo
- */
 public class ShoppingCartBuilder {
 
     private final CartItemParser parser;

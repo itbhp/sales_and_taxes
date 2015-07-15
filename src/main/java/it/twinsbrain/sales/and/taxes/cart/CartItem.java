@@ -4,10 +4,6 @@ import it.twinsbrain.sales.and.taxes.strategies.TaxStrategy;
 
 import java.math.BigDecimal;
 
-/**
- *
- * @author angelosciarra
- */
 public class CartItem {
 
     public final ProductType type;

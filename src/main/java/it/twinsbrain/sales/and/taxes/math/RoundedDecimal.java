@@ -2,9 +2,6 @@ package it.twinsbrain.sales.and.taxes.math;
 
 import java.math.BigDecimal;
 
-/**
- * @author angelosciarra
- */
 public class RoundedDecimal {
 
     private final BigDecimal orig;

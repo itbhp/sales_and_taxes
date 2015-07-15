@@ -14,10 +14,6 @@ import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
 
-/**
- *
- * @author paolo
- */
 public class ShoppingCartBuilderTest {
 
     private ShoppingCartBuilder underTest;
