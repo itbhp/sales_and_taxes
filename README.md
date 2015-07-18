@@ -34,6 +34,7 @@ Write an application that prints out the receipt details for these shopping bask
     1 imported box of chocolates at 11.25
 
     OUTPUT
+    
     Output 1:
     1 book: 12.49
     1 music CD: 16.49
