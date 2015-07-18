@@ -1,4 +1,4 @@
-# INFO #
+# README #
 
 This is my solution to the sales and taxes problem from ThoughtWorks.
 
