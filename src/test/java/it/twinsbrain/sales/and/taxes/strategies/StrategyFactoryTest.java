@@ -73,7 +73,7 @@ public class StrategyFactoryTest {
     }
 
     @Test
-    public void cd_imported_have_base_and_importe_taxes() throws NoSuchFieldException, IllegalAccessException {
+    public void cd_imported_have_base_and_imported_taxes() throws NoSuchFieldException, IllegalAccessException {
         given:
         {
             item = new CartItem.Builder().withDescription("imported Queen compilation cd").withType(MUSIC).withPrice(new BigDecimal("1.00")).build();

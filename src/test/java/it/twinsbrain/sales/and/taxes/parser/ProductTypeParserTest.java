@@ -99,7 +99,7 @@ public class ProductTypeParserTest {
     }
 
     @Test
-    public void anythingelse_is_others(){
+    public void anything_else_is_others(){
         given:{
             input = "1 imported bottle of perfume at 27.99";
         }
