@@ -8,10 +8,10 @@ import java.util.List;
 
 public class ShoppingCart {
 
-    private List<CartItem> items;
-    private TaxStrategyFactory taxStrategyFactory;
+    private final List<CartItem> items;
+    private final TaxStrategyFactory taxStrategyFactory;
 
-    public ShoppingCart(TaxStrategyFactory taxStrategyFactory) {
+    public ShoppingCart(final TaxStrategyFactory taxStrategyFactory) {
         this.taxStrategyFactory = taxStrategyFactory;
         this.items = new LinkedList<>();
     }
@@ -21,9 +21,9 @@ public class ShoppingCart {
     }
 
     public Receipt toReceipt() {
-        List<CartItem> itemsWithTaxes = new LinkedList<>();
+        final List<CartItem> itemsWithTaxes = new LinkedList<>();
         for (CartItem item : items) {
-            CartItem itemWithTax = item.accept(taxStrategyFactory.createFrom(item));
+            final CartItem itemWithTax = item.accept(taxStrategyFactory.createFrom(item));
             itemsWithTaxes.add(itemWithTax);
         }
         return new Receipt(itemsWithTaxes);

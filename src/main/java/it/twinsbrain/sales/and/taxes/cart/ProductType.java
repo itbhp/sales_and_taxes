@@ -13,13 +13,13 @@ public enum ProductType {
     MEDICAL(asList("pills")),
     OTHERS(Collections.<String>emptyList());
 
-    ProductType(List<String> keywords) {
+    ProductType(final List<String> keywords) {
         this.keywords = keywords;
     }
 
     private final List<String> keywords;
 
-    public boolean match(String productDescription) {
+    public boolean match(final String productDescription) {
         return keywords.stream().anyMatch((keyword) -> (productDescription.toLowerCase().contains(keyword.toLowerCase())));
     }
 

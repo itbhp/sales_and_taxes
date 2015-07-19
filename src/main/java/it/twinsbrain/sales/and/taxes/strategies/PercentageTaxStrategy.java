@@ -7,13 +7,13 @@ import java.math.BigDecimal;
 import java.math.RoundingMode;
 
 public abstract class PercentageTaxStrategy implements TaxStrategy {
-    private RoundingMode roundingMode = RoundingMode.CEILING;
-    private int scale = 2;
+    private final RoundingMode roundingMode = RoundingMode.CEILING;
+    private final int scale = 2;
 
-    protected CartItem applyPercentageTax(CartItem visitee, String taxPercentage) {
-        BigDecimal rate = new BigDecimal(taxPercentage);
-        BigDecimal taxes = new RoundedDecimal(visitee.price.multiply(rate), "5", "100").getValue();
-        BigDecimal priceWithTaxes = visitee.priceWithTaxes.add(taxes);
+    protected CartItem applyPercentageTax(final CartItem visitee, final String taxPercentage) {
+        final BigDecimal rate = new BigDecimal(taxPercentage);
+        final BigDecimal taxes = new RoundedDecimal(visitee.price.multiply(rate), "5", "100").getValue();
+        final BigDecimal priceWithTaxes = visitee.priceWithTaxes.add(taxes);
 
         return new CartItem.Builder()
                 .withType(visitee.type)

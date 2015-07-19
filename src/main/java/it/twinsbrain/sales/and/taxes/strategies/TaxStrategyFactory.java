@@ -11,10 +11,10 @@ import static java.util.Collections.unmodifiableList;
 
 public class TaxStrategyFactory {
 
-    private List<ProductType> taxExcluded = unmodifiableList(asList(BOOK, FOOD, MEDICAL));
+    private final List<ProductType> taxExcluded = unmodifiableList(asList(BOOK, FOOD, MEDICAL));
 
-    public TaxStrategy createFrom(CartItem item){
-        boolean isImported = item.description.toLowerCase().contains("imported");
+    public TaxStrategy createFrom(final CartItem item){
+        final boolean isImported = item.description.toLowerCase().contains("imported");
         if(isImported){
             if(taxExcluded.contains(item.type)){
                 return new ImportedTaxStrategy();

@@ -5,22 +5,18 @@ import java.math.BigDecimal;
 public class RoundedDecimal {
 
     private final BigDecimal orig;
-    private BigDecimal value;
-    private BigDecimal roundFactor;
+    private final BigDecimal roundFactor;
 
-    public RoundedDecimal(BigDecimal orig, String upTo, String order) {
+    public RoundedDecimal(final BigDecimal orig, final String upTo, final String order) {
         this.orig = orig;
         roundFactor = new BigDecimal(order).divide(new BigDecimal(upTo));
     }
 
     public BigDecimal getValue() {
-        if(value == null){
-            value = ceil(orig.multiply(roundFactor)).divide(roundFactor);
-        }
-        return value;
+         return ceil(orig.multiply(roundFactor)).divide(roundFactor);
     }
 
-    private BigDecimal ceil(BigDecimal value) {
+    private BigDecimal ceil(final BigDecimal value) {
         return new BigDecimal(Math.ceil(value.doubleValue()));
     }
 }
