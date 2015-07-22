@@ -1,10 +1,13 @@
 package it.twinsbrain.sales.and.taxes.strategies;
 
 import it.twinsbrain.sales.and.taxes.cart.CartItem;
+import org.hamcrest.BaseMatcher;
+import org.hamcrest.Description;
 import org.junit.Before;
 import org.junit.Test;
 
 import java.math.BigDecimal;
+import java.util.List;
 
 import static it.twinsbrain.sales.and.taxes.cart.ProductType.MEDICAL;
 import static it.twinsbrain.sales.and.taxes.cart.ProductType.MUSIC;
@@ -88,8 +91,8 @@ public class StrategyFactoryTest {
 
             ComposedStrategy toVerify = (ComposedStrategy) strategy;
 
-            assertThat(toVerify.current, is(instanceOf(ImportedTaxStrategy.class)));
-            assertThat(toVerify.next, is(instanceOf(BaseTaxStrategy.class)));
+            assertThat(toVerify.strategies(), containsInstanceOf(ImportedTaxStrategy.class));
+            assertThat(toVerify.strategies(), containsInstanceOf(BaseTaxStrategy.class));
         }
     }
 
@@ -109,8 +112,29 @@ public class StrategyFactoryTest {
 
             ComposedStrategy toVerify = (ComposedStrategy) strategy;
 
-            assertThat(toVerify.current, is(instanceOf(ImportedTaxStrategy.class)));
-            assertThat(toVerify.next, is(instanceOf(BaseTaxStrategy.class)));
+            assertThat(toVerify.strategies(), containsInstanceOf(ImportedTaxStrategy.class));
+            assertThat(toVerify.strategies(), containsInstanceOf(BaseTaxStrategy.class));
         }
+    }
+
+    private BaseMatcher<List<TaxStrategy>> containsInstanceOf(final Class<? extends TaxStrategy> clazz)
+    {
+     return new BaseMatcher<List<TaxStrategy>>() {
+         @Override
+         public boolean matches(Object item) {
+             List<TaxStrategy> list = (List<TaxStrategy>)item;
+             for(TaxStrategy strategy: list){
+                 if(clazz.isInstance(strategy)){
+                     return true;
+                 }
+             }
+             return false;
+         }
+
+         @Override
+         public void describeTo(Description description) {
+            description.appendText("the list does not contains instance of "+clazz);
+         }
+     };
     }
 }
