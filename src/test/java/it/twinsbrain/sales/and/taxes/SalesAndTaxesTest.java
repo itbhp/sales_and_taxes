@@ -8,6 +8,7 @@ import it.twinsbrain.sales.and.taxes.strategies.TaxStrategyFactory;
 import org.junit.Test;
 
 import java.io.IOException;
+import java.net.URISyntaxException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -74,11 +75,11 @@ public class SalesAndTaxesTest {
     private String output;
 
     @Test
-    public void acceptanceTestOne() throws IOException {
+    public void acceptanceTestOne() throws IOException, URISyntaxException {
         given:
         {
             underTest = new ShoppingCartBuilder(new CartItemParser(), new TaxStrategyFactory())
-                    .createShoppingCartFrom(readTextFile("src/test/resources/inputs/one.txt"));
+                    .createShoppingCartFrom(readTextFile("/inputs/one.txt"));
         }
         when:
         {
@@ -86,16 +87,16 @@ public class SalesAndTaxesTest {
         }
         then:
         {
-            assertThat(output, is(equalTo(readTextFile("src/test/resources/outputs/one.txt"))));
+            assertThat(output, is(equalTo(readTextFile("/outputs/one.txt"))));
         }
     }
 
     @Test
-    public void acceptanceTestTwo() throws IOException {
+    public void acceptanceTestTwo() throws IOException, URISyntaxException {
         given:
         {
             underTest = new ShoppingCartBuilder(new CartItemParser(), new TaxStrategyFactory())
-                    .createShoppingCartFrom(readTextFile("src/test/resources/inputs/two.txt"));
+                    .createShoppingCartFrom(readTextFile("/inputs/two.txt"));
         }
         when:
         {
@@ -103,16 +104,16 @@ public class SalesAndTaxesTest {
         }
         then:
         {
-            assertThat(output, is(equalTo(readTextFile("src/test/resources/outputs/two.txt"))));
+            assertThat(output, is(equalTo(readTextFile("/outputs/two.txt"))));
         }
     }
 
     @Test
-    public void acceptanceTestThree() throws IOException {
+    public void acceptanceTestThree() throws IOException, URISyntaxException {
         given:
         {
             underTest = new ShoppingCartBuilder(new CartItemParser(), new TaxStrategyFactory())
-                    .createShoppingCartFrom(readTextFile("src/test/resources/inputs/three.txt"));
+                    .createShoppingCartFrom(readTextFile("/inputs/three.txt"));
         }
         when:
         {
@@ -120,12 +121,12 @@ public class SalesAndTaxesTest {
         }
         then:
         {
-            assertThat(output, is(equalTo(readTextFile("src/test/resources/outputs/three.txt"))));
+            assertThat(output, is(equalTo(readTextFile("/outputs/three.txt"))));
         }
     }
 
-    private String readTextFile(String path) throws IOException {
-        Path resolvedPath = Paths.get(path);
+    private String readTextFile(String path) throws IOException, URISyntaxException {
+        Path resolvedPath = Paths.get(this.getClass().getResource(path).toURI());
         return new String(Files.readAllBytes(resolvedPath), "UTF-8");
     }
 

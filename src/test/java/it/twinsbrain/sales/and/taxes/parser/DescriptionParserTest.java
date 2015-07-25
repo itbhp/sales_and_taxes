@@ -1,11 +1,11 @@
 package it.twinsbrain.sales.and.taxes.parser;
 
-import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.CoreMatchers.is;
+import static org.junit.Assert.assertThat;
 
 public class DescriptionParserTest {
 
@@ -28,7 +28,7 @@ public class DescriptionParserTest {
             description = underTest.readDescription(input);
         }
         then:{
-            Assert.assertThat(description,is(equalTo("chocolate bar")));
+            assertThat(description, is(equalTo("chocolate bar")));
         }
     }
 }
