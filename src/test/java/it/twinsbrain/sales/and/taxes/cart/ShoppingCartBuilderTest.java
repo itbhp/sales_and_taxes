@@ -63,11 +63,11 @@ public class ShoppingCartBuilderTest {
             assertThat(cartItem1.price, is(equalTo(new BigDecimal("12.99"))));
             assertThat(cartItem1.type, is(MUSIC));
 
-            CartItem cartitem2 = cartItems.get(1);
-            assertThat(cartitem2.quantity, is(1));
-            assertThat(cartitem2.description, is(equalTo("Harry Potter book")));
-            assertThat(cartitem2.price, is(equalTo(new BigDecimal("25.99"))));
-            assertThat(cartitem2.type, is(BOOK));
+            CartItem cartItem2 = cartItems.get(1);
+            assertThat(cartItem2.quantity, is(1));
+            assertThat(cartItem2.description, is(equalTo("Harry Potter book")));
+            assertThat(cartItem2.price, is(equalTo(new BigDecimal("25.99"))));
+            assertThat(cartItem2.type, is(BOOK));
         }
     }
 }
