@@ -16,7 +16,6 @@ public class ComposedStrategy implements TaxStrategy {
         this.next = next;
     }
 
-
     @Override
     public CartItem updateTaxesOn(final CartItem visitee) {
         return next.updateTaxesOn(current.updateTaxesOn(visitee));

@@ -25,15 +25,11 @@ public class ShoppingCartBuilder {
     }
 
     private CartItem createCartItemFrom(String input) {
-        final String description = parser.readDescription(input);
-        final int quantity = parser.readQuantity(input);
-        final ProductType type = parser.readProductType(input);
-        final BigDecimal price = parser.readPrice(input);
         return new CartItem.Builder()
-                .withType(type)
-                .withQuantity(quantity)
-                .withPrice(price)
-                .withDescription(description)
+                .withType(parser.readProductType(input))
+                .withQuantity(parser.readQuantity(input))
+                .withPrice(parser.readPrice(input))
+                .withDescription(parser.readDescription(input))
                 .build();
     }
 }

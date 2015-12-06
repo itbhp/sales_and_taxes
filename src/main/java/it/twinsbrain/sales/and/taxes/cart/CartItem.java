@@ -26,6 +26,10 @@ public class CartItem {
         this.priceWithTaxes = priceWithTaxes;
     }
 
+    public boolean isImported(){
+        return description.toLowerCase().contains("imported");
+    }
+
     public CartItem accept(final TaxStrategy visitor) {
         return visitor.updateTaxesOn(this);
     }

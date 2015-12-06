@@ -14,8 +14,7 @@ public class TaxStrategyFactory {
     private final List<ProductType> taxExcluded = unmodifiableList(asList(BOOK, FOOD, MEDICAL));
 
     public TaxStrategy createFrom(final CartItem item){
-        final boolean isImported = item.description.toLowerCase().contains("imported");
-        if(isImported){
+        if(item.isImported()){
             if(taxExcluded.contains(item.type)){
                 return new ImportedTaxStrategy();
             }else {
