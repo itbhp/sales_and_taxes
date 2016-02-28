@@ -16,14 +16,10 @@ public class ShoppingCart {
         this.items = new LinkedList<>();
     }
 
-    protected List<CartItem> listInputItems() {
-        return Collections.unmodifiableList(items);
-    }
-
     public Receipt toReceipt() {
         final List<CartItem> itemsWithTaxes = new LinkedList<>();
         for (CartItem item : items) {
-            final CartItem itemWithTax = item.accept(taxStrategyFactory.createFrom(item));
+            final CartItem itemWithTax = item.accept(taxStrategyFactory.createFor(item));
             itemsWithTaxes.add(itemWithTax);
         }
         return new Receipt(itemsWithTaxes);
@@ -31,5 +27,9 @@ public class ShoppingCart {
 
     public void add(CartItem item) {
         items.add(item);
+    }
+
+    protected List<CartItem> cartItems() {
+        return Collections.unmodifiableList(items);
     }
 }

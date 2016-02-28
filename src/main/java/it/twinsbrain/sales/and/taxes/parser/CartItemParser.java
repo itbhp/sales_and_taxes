@@ -10,6 +10,8 @@ import static it.twinsbrain.sales.and.taxes.cart.ProductType.OTHERS;
 
 public class CartItemParser {
 
+    public static final int DESCRIPTION = 2;
+    public static final int PRICE = 3;
     private final String regexPattern = "(\\d+)\\s([\\w\\s]+)\\sat\\s(\\d+\\.\\d+)";
     private final Pattern inputPattern;
 
@@ -32,14 +34,14 @@ public class CartItemParser {
     }
 
     public String readDescription(final String input) {
-        return extractGroupFrom(input, 2);
+        return read(input, DESCRIPTION);
     }
 
     public BigDecimal readPrice(final String input) {
-        return new BigDecimal(extractGroupFrom(input, 3));
+        return new BigDecimal(read(input, PRICE));
     }
 
-    private String extractGroupFrom(final String input, final int groupNumber) {
+    private String read(final String input, final int groupNumber) {
         Matcher m = inputPattern.matcher(input);
         m.find();
         return m.group(groupNumber);

@@ -4,13 +4,14 @@ import java.util.Collections;
 import java.util.List;
 
 import static java.util.Arrays.asList;
+import static java.util.Collections.singletonList;
 
 public enum ProductType {
 
     FOOD(asList("chocolate", "bread")),
-    BOOK(asList("book")),
+    BOOK(singletonList("book")),
     MUSIC(asList("cd", "mp3")),
-    MEDICAL(asList("pills")),
+    MEDICAL(singletonList("pills")),
     OTHERS(Collections.<String>emptyList());
 
     ProductType(final List<String> keywords) {

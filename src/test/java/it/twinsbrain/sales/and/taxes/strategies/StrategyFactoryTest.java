@@ -35,7 +35,7 @@ public class StrategyFactoryTest {
         }
         when:
         {
-            strategy = underTest.createFrom(item);
+            strategy = underTest.createFor(item);
         }
         then:
         {
@@ -51,7 +51,7 @@ public class StrategyFactoryTest {
         }
         when:
         {
-            strategy = underTest.createFrom(item);
+            strategy = underTest.createFor(item);
         }
         then:
         {
@@ -67,7 +67,7 @@ public class StrategyFactoryTest {
         }
         when:
         {
-            strategy = underTest.createFrom(item);
+            strategy = underTest.createFor(item);
         }
         then:
         {
@@ -83,7 +83,7 @@ public class StrategyFactoryTest {
         }
         when:
         {
-            strategy = underTest.createFrom(item);
+            strategy = underTest.createFor(item);
         }
         then:
         {
@@ -104,7 +104,7 @@ public class StrategyFactoryTest {
         }
         when:
         {
-            strategy = underTest.createFrom(item);
+            strategy = underTest.createFor(item);
         }
         then:
         {

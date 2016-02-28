@@ -76,53 +76,32 @@ public class SalesAndTaxesTest {
 
     @Test
     public void acceptanceTestOne() throws IOException, URISyntaxException {
-        given:
-        {
-            underTest = new ShoppingCartBuilder(new CartItemParser(), new TaxStrategyFactory())
-                    .createShoppingCartFrom(readTextFile("/inputs/one.txt"));
-        }
-        when:
-        {
-            output = underTest.toReceipt().print();
-        }
-        then:
-        {
-            assertThat(output, is(equalTo(readTextFile("/outputs/one.txt"))));
-        }
+        underTest = new ShoppingCartBuilder(new CartItemParser(), new TaxStrategyFactory())
+                .createShoppingCartFrom(readTextFile("/inputs/one.txt"));
+
+        output = underTest.toReceipt().print();
+
+        assertThat(output, is(equalTo(readTextFile("/outputs/one.txt"))));
     }
 
     @Test
     public void acceptanceTestTwo() throws IOException, URISyntaxException {
-        given:
-        {
-            underTest = new ShoppingCartBuilder(new CartItemParser(), new TaxStrategyFactory())
-                    .createShoppingCartFrom(readTextFile("/inputs/two.txt"));
-        }
-        when:
-        {
-            output = underTest.toReceipt().print();
-        }
-        then:
-        {
-            assertThat(output, is(equalTo(readTextFile("/outputs/two.txt"))));
-        }
+        underTest = new ShoppingCartBuilder(new CartItemParser(), new TaxStrategyFactory())
+                .createShoppingCartFrom(readTextFile("/inputs/two.txt"));
+
+        output = underTest.toReceipt().print();
+
+        assertThat(output, is(equalTo(readTextFile("/outputs/two.txt"))));
     }
 
     @Test
     public void acceptanceTestThree() throws IOException, URISyntaxException {
-        given:
-        {
-            underTest = new ShoppingCartBuilder(new CartItemParser(), new TaxStrategyFactory())
-                    .createShoppingCartFrom(readTextFile("/inputs/three.txt"));
-        }
-        when:
-        {
-            output = underTest.toReceipt().print();
-        }
-        then:
-        {
-            assertThat(output, is(equalTo(readTextFile("/outputs/three.txt"))));
-        }
+        underTest = new ShoppingCartBuilder(new CartItemParser(), new TaxStrategyFactory())
+                .createShoppingCartFrom(readTextFile("/inputs/three.txt"));
+
+        output = underTest.toReceipt().print();
+
+        assertThat(output, is(equalTo(readTextFile("/outputs/three.txt"))));
     }
 
     private String readTextFile(String path) throws IOException, URISyntaxException {

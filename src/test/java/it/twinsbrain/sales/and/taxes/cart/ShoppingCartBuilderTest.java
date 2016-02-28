@@ -21,53 +21,45 @@ public class ShoppingCartBuilderTest {
     private ShoppingCart shoppingCart;
 
     @Before
-    public void setup(){
-        underTest = new ShoppingCartBuilder(new CartItemParser(),new TaxStrategyFactory());
+    public void setup() {
+        underTest = new ShoppingCartBuilder(new CartItemParser(), new TaxStrategyFactory());
     }
 
     @Test
-    public void one_product_one_cart_item(){
-        given:{
-            input = "1 music cd at 12.99";
-        }
-        when:{
-            shoppingCart = underTest.createShoppingCartFrom(input);
-        }
-        then:{
-            List<CartItem> cartItems = shoppingCart.listInputItems();
-            assertThat(cartItems.size(), is(1));
+    public void one_product_one_cart_item() {
+        input = "1 music cd at 12.99";
 
-            CartItem cartItem = cartItems.get(0);
-            assertThat(cartItem.quantity, is(1));
-            assertThat(cartItem.description, is(equalTo("music cd")));
-            assertThat(cartItem.price, is(equalTo(new BigDecimal("12.99"))));
-            assertThat(cartItem.type, is(MUSIC));
-        }
+        shoppingCart = underTest.createShoppingCartFrom(input);
+
+        List<CartItem> cartItems = shoppingCart.cartItems();
+        assertThat(cartItems.size(), is(1));
+
+        CartItem cartItem = cartItems.get(0);
+        assertThat(cartItem.quantity, is(1));
+        assertThat(cartItem.description, is(equalTo("music cd")));
+        assertThat(cartItem.price, is(equalTo(new BigDecimal("12.99"))));
+        assertThat(cartItem.type, is(MUSIC));
     }
 
     @Test
-    public void two_products_two_cart_items(){
-        given:{
-            input = "1 music cd at 12.99\n1 Harry Potter book at 25.99";
-        }
-        when:{
-            shoppingCart = underTest.createShoppingCartFrom(input);
-        }
-        then:{
-            List<CartItem> cartItems = shoppingCart.listInputItems();
-            assertThat(cartItems.size(), is(2));
+    public void two_products_two_cart_items() {
+        input = "1 music cd at 12.99\n1 Harry Potter book at 25.99";
 
-            CartItem cartItem1 = cartItems.get(0);
-            assertThat(cartItem1.quantity, is(1));
-            assertThat(cartItem1.description, is(equalTo("music cd")));
-            assertThat(cartItem1.price, is(equalTo(new BigDecimal("12.99"))));
-            assertThat(cartItem1.type, is(MUSIC));
+        shoppingCart = underTest.createShoppingCartFrom(input);
 
-            CartItem cartItem2 = cartItems.get(1);
-            assertThat(cartItem2.quantity, is(1));
-            assertThat(cartItem2.description, is(equalTo("Harry Potter book")));
-            assertThat(cartItem2.price, is(equalTo(new BigDecimal("25.99"))));
-            assertThat(cartItem2.type, is(BOOK));
-        }
+        List<CartItem> cartItems = shoppingCart.cartItems();
+        assertThat(cartItems.size(), is(2));
+
+        CartItem cartItem1 = cartItems.get(0);
+        assertThat(cartItem1.quantity, is(1));
+        assertThat(cartItem1.description, is(equalTo("music cd")));
+        assertThat(cartItem1.price, is(equalTo(new BigDecimal("12.99"))));
+        assertThat(cartItem1.type, is(MUSIC));
+
+        CartItem cartItem2 = cartItems.get(1);
+        assertThat(cartItem2.quantity, is(1));
+        assertThat(cartItem2.description, is(equalTo("Harry Potter book")));
+        assertThat(cartItem2.price, is(equalTo(new BigDecimal("25.99"))));
+        assertThat(cartItem2.type, is(BOOK));
     }
 }

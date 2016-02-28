@@ -13,27 +13,20 @@ import static org.junit.Assert.assertThat;
 public class BaseTaxStrategyTest {
 
     private TaxStrategy underTest;
-    private CartItem item;
 
     @Before
-    public void setUp(){
+    public void setUp() {
         underTest = new BaseTaxStrategy();
     }
 
     @Test
-    public void itShouldApplyTenPercentTax(){
+    public void itShouldApplyTenPercentTax() {
 
-        given:{
-            item = new CartItem.Builder().withPrice(new BigDecimal("1.00")).build();
-        }
+        CartItem item = new CartItem.Builder().withPrice(new BigDecimal("1.00")).build();
 
-        when:{
-            item = underTest.updateTaxesOn(item);
-        }
+        CartItem updatedItem = underTest.updateTaxesOn(item);
 
-        then:{
-
-            assertThat("price should be 10 percent more", item.priceWithTaxes, is(equalTo(new BigDecimal("1.10"))));
-        }
+        assertThat("item visited should not change", item.priceWithTaxes, is(equalTo(new BigDecimal("1.00"))));
+        assertThat("price should be 10 percent more", updatedItem.priceWithTaxes, is(equalTo(new BigDecimal("1.10"))));
     }
 }

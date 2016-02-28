@@ -13,24 +13,19 @@ import static org.junit.Assert.assertThat;
 public class NothingToDoStrategyTest {
 
     private TaxStrategy underTest;
-    private CartItem item;
 
     @Before
-    public void setup(){
+    public void setup() {
         underTest = new NothingToDoStrategy();
     }
 
 
     @Test
-    public void itShouldDoNothing(){
-        given:{
-            item = new CartItem.Builder().withPrice(new BigDecimal("1.99")).build();
-        }
-        when:{
-            item = underTest.updateTaxesOn(item);
-        }
-        then:{
-            assertThat(item.priceWithTaxes, is(equalTo(item.price)));
-        }
+    public void itShouldDoNothing() {
+        CartItem item = new CartItem.Builder().withPrice(new BigDecimal("1.99")).build();
+
+        item = underTest.updateTaxesOn(item);
+
+        assertThat(item.priceWithTaxes, is(equalTo(item.price)));
     }
 }

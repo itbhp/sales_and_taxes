@@ -13,7 +13,7 @@ import static org.junit.Assert.assertThat;
 @RunWith(Enclosed.class)
 public class RoundedDecimalTest {
 
-    public static class TwoPercentTest{
+    public static class TwoPercentTest {
         RoundedDecimal underTest;
         BigDecimal input;
 
@@ -72,34 +72,21 @@ public class RoundedDecimalTest {
 
         @Test
         public void belowFiveCentsDecimal() {
-            given:
-            {
-                input = new BigDecimal("17.018");
-            }
-            when:
-            {
-                underTest = new RoundedDecimal(input, "5", "100");
-            }
-            then:
-            {
-                assertThat(underTest.getValue(), is(equalTo(new BigDecimal("17.05"))));
-            }
+            input = new BigDecimal("17.018");
+
+            underTest = new RoundedDecimal(input, "5", "100");
+
+            assertThat(underTest.getValue(), is(equalTo(new BigDecimal("17.05"))));
         }
 
         @Test
         public void uponFiveCentsDecimal() {
-            given:
-            {
-                input = new BigDecimal("17.053");
-            }
-            when:
-            {
-                underTest = new RoundedDecimal(input, "5", "100");
-            }
-            then:
-            {
-                assertThat(underTest.getValue().compareTo(new BigDecimal("17.10")),is(0));
-            }
+
+            input = new BigDecimal("17.053");
+
+            underTest = new RoundedDecimal(input, "5", "100");
+
+            assertThat(underTest.getValue().compareTo(new BigDecimal("17.10")), is(0));
         }
     }
 

@@ -13,12 +13,12 @@ public class TaxStrategyFactory {
 
     private final List<ProductType> taxExcluded = unmodifiableList(asList(BOOK, FOOD, MEDICAL));
 
-    public TaxStrategy createFrom(final CartItem item){
+    public TaxStrategy createFor(final CartItem item){
         if(item.isImported()){
             if(taxExcluded.contains(item.type)){
                 return new ImportedTaxStrategy();
             }else {
-                return new ComposedStrategy(new ImportedTaxStrategy(),new BaseTaxStrategy());
+                return new ComposedStrategy(new ImportedTaxStrategy(), new BaseTaxStrategy());
             }
         }else{
             if(taxExcluded.contains(item.type)){

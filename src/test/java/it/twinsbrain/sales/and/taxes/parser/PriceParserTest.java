@@ -8,28 +8,22 @@ import java.math.BigDecimal;
 
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.CoreMatchers.is;
+import static org.junit.Assert.assertThat;
 
 public class PriceParserTest {
     private CartItemParser underTest;
 
-    private String input;
-    private BigDecimal price;
-
     @Before
-    public void setup(){
+    public void setup() {
         underTest = new CartItemParser();
     }
 
     @Test
-    public void itCanReadPrice(){
-        given:{
-            input = "1 chocolate bar at 0.85";
-        }
-        when:{
-            price = underTest.readPrice(input);
-        }
-        then:{
-            Assert.assertThat(price, is(equalTo(new BigDecimal("0.85"))));
-        }
+    public void itCanReadPrice() {
+        String input = "1 chocolate bar at 0.85";
+
+        BigDecimal price = underTest.readPrice(input);
+
+        assertThat(price, is(equalTo(new BigDecimal("0.85"))));
     }
 }

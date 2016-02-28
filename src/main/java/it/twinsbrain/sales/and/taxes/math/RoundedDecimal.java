@@ -7,9 +7,9 @@ public class RoundedDecimal {
     private final BigDecimal orig;
     private final BigDecimal roundFactor;
 
-    public RoundedDecimal(final BigDecimal orig, final String upTo, final String order) {
+    public RoundedDecimal(final BigDecimal orig, final String nearestUnit, final String unitBase) {
         this.orig = orig;
-        roundFactor = new BigDecimal(order).divide(new BigDecimal(upTo));
+        roundFactor = new BigDecimal(unitBase).divide(new BigDecimal(nearestUnit));
     }
 
     public BigDecimal getValue() {

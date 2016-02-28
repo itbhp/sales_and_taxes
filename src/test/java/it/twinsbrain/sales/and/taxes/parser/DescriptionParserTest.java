@@ -11,24 +11,17 @@ public class DescriptionParserTest {
 
     private CartItemParser underTest;
 
-    private String input;
-    private String description;
-
     @Before
-    public void setup(){
+    public void setup() {
         underTest = new CartItemParser();
     }
 
     @Test
-    public void itCanReadDescription(){
-        given:{
-            input = "1 chocolate bar at 0.85";
-        }
-        when:{
-            description = underTest.readDescription(input);
-        }
-        then:{
-            assertThat(description, is(equalTo("chocolate bar")));
-        }
+    public void itCanReadDescription() {
+        String input = "1 chocolate bar at 0.85";
+
+        String description = underTest.readDescription(input);
+
+        assertThat(description, is(equalTo("chocolate bar")));
     }
 }
