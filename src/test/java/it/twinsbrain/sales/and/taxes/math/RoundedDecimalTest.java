@@ -19,50 +19,29 @@ public class RoundedDecimalTest {
 
         @Test
         public void belowTwoCentsDecimal() {
-            given:
-            {
-                input = new BigDecimal("17.018");
-            }
-            when:
-            {
-                underTest = new RoundedDecimal(input, "2", "100");
-            }
-            then:
-            {
-                assertThat(underTest.getValue(), is(equalTo(new BigDecimal("17.02"))));
-            }
+            input = new BigDecimal("17.018");
+
+            underTest = new RoundedDecimal(input, "2", "100");
+
+            assertThat(underTest.getValue(), is(equalTo(new BigDecimal("17.02"))));
         }
 
         @Test
         public void firstStepUponTwoCentsDecimal() {
-            given:
-            {
-                input = new BigDecimal("17.023");
-            }
-            when:
-            {
-                underTest = new RoundedDecimal(input, "2", "100");
-            }
-            then:
-            {
-                assertThat(underTest.getValue(), is(equalTo(new BigDecimal("17.04"))));
-            }
+            input = new BigDecimal("17.023");
+
+            underTest = new RoundedDecimal(input, "2", "100");
+
+            assertThat(underTest.getValue(), is(equalTo(new BigDecimal("17.04"))));
         }
 
         @Test
         public void secondStepUponTwoCentsDecimal() {
-            given:
-            {
-                input = new BigDecimal("17.043");
-            }
-            when:
-            {
-                underTest = new RoundedDecimal(input, "2", "100");
-            }
-            then:
-            {
-                assertThat(underTest.getValue(), is(equalTo(new BigDecimal("17.06"))));
-            }
+            input = new BigDecimal("17.043");
+
+            underTest = new RoundedDecimal(input, "2", "100");
+
+            assertThat(underTest.getValue(), is(equalTo(new BigDecimal("17.06"))));
         }
     }
 
