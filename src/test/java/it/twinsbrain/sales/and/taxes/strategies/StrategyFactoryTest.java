@@ -1,6 +1,7 @@
 package it.twinsbrain.sales.and.taxes.strategies;
 
 import it.twinsbrain.sales.and.taxes.cart.CartItem;
+import org.hamcrest.CoreMatchers;
 import org.hamcrest.Description;
 import org.hamcrest.TypeSafeMatcher;
 import org.junit.Before;
@@ -10,6 +11,7 @@ import java.math.BigDecimal;
 import java.util.List;
 
 import static it.twinsbrain.sales.and.taxes.cart.ProductType.*;
+import static org.hamcrest.CoreMatchers.hasItem;
 import static org.hamcrest.CoreMatchers.instanceOf;
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
@@ -60,8 +62,8 @@ public class StrategyFactoryTest {
 
         assertThat(strategy, is(instanceOf(ComposedStrategy.class)));
         ComposedStrategy toVerify = (ComposedStrategy) strategy;
-        assertThat(toVerify.strategies(), containsInstanceOf(ImportedTaxStrategy.class));
-        assertThat(toVerify.strategies(), containsInstanceOf(BaseTaxStrategy.class));
+        assertThat(toVerify.strategies(), hasItem(instanceOf(ImportedTaxStrategy.class)));
+        assertThat(toVerify.strategies(), hasItem(instanceOf(BaseTaxStrategy.class)));
     }
 
     @Test
@@ -72,26 +74,8 @@ public class StrategyFactoryTest {
 
         assertThat(strategy, is(instanceOf(ComposedStrategy.class)));
         ComposedStrategy toVerify = (ComposedStrategy) strategy;
-        assertThat(toVerify.strategies(), containsInstanceOf(ImportedTaxStrategy.class));
-        assertThat(toVerify.strategies(), containsInstanceOf(BaseTaxStrategy.class));
+        assertThat(toVerify.strategies(), hasItem(instanceOf(ImportedTaxStrategy.class)));
+        assertThat(toVerify.strategies(), hasItem(instanceOf(BaseTaxStrategy.class)));
     }
 
-    private TypeSafeMatcher<List<TaxStrategy>> containsInstanceOf(final Class<? extends TaxStrategy> clazz) {
-        return new TypeSafeMatcher<List<TaxStrategy>>() {
-            @Override
-            protected boolean matchesSafely(List<TaxStrategy> list) {
-                for (TaxStrategy strategy : list) {
-                    if (clazz.isInstance(strategy)) {
-                        return true;
-                    }
-                }
-                return false;
-            }
-
-            @Override
-            public void describeTo(Description description) {
-                description.appendText("the list does not contains instance of " + clazz);
-            }
-        };
-    }
 }

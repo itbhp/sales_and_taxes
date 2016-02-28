@@ -8,13 +8,13 @@ import java.math.RoundingMode;
 
 public abstract class PercentageTaxStrategy implements TaxStrategy {
     private final RoundingMode roundingMode = RoundingMode.CEILING;
-    private final int scale = 2;
 
     protected CartItem applyPercentageTax(final CartItem visitee, final String taxPercentage) {
         final BigDecimal rate = new BigDecimal(taxPercentage);
         final BigDecimal taxes = new RoundedDecimal(visitee.price.multiply(rate), "5", "100").getValue();
         final BigDecimal priceWithTaxes = visitee.priceWithTaxes.add(taxes);
 
+        int scale = 2;
         return new CartItem.Builder()
                 .withType(visitee.type)
                 .withQuantity(visitee.quantity)
