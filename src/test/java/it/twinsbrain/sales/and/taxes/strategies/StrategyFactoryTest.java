@@ -1,19 +1,13 @@
 package it.twinsbrain.sales.and.taxes.strategies;
 
 import it.twinsbrain.sales.and.taxes.cart.CartItem;
-import org.hamcrest.CoreMatchers;
-import org.hamcrest.Description;
-import org.hamcrest.TypeSafeMatcher;
 import org.junit.Before;
 import org.junit.Test;
 
 import java.math.BigDecimal;
-import java.util.List;
 
 import static it.twinsbrain.sales.and.taxes.cart.ProductType.*;
-import static org.hamcrest.CoreMatchers.hasItem;
-import static org.hamcrest.CoreMatchers.instanceOf;
-import static org.hamcrest.CoreMatchers.is;
+import static org.hamcrest.Matchers.*;
 import static org.junit.Assert.assertThat;
 
 public class StrategyFactoryTest {
@@ -38,7 +32,8 @@ public class StrategyFactoryTest {
 
     @Test
     public void medical_imported_have_only_import_taxes() {
-        item = new CartItem.Builder().withDescription("imported bottle of pills for headache").withType(MEDICAL).build();
+        item = new CartItem.Builder().withDescription("imported bottle of pills for headache")
+                .withType(MEDICAL).build();
 
         strategy = underTest.createFor(item);
 
@@ -56,7 +51,8 @@ public class StrategyFactoryTest {
 
     @Test
     public void cd_imported_have_base_and_imported_taxes() throws NoSuchFieldException, IllegalAccessException {
-        item = new CartItem.Builder().withDescription("imported Queen compilation cd").withType(MUSIC).withPrice(new BigDecimal("1.00")).build();
+        item = new CartItem.Builder().withDescription("imported Queen compilation cd").withType(MUSIC)
+                .withPrice(new BigDecimal("1.00")).build();
 
         strategy = underTest.createFor(item);
 
@@ -67,8 +63,10 @@ public class StrategyFactoryTest {
     }
 
     @Test
-    public void imported_bottle_of_perfume_have_base_and_imported_taxes() throws NoSuchFieldException, IllegalAccessException {
-        item = new CartItem.Builder().withDescription("imported bottle of perfume").withType(OTHERS).withPrice(new BigDecimal("27.99")).build();
+    public void imported_bottle_of_perfume_have_base_and_imported_taxes()
+            throws NoSuchFieldException, IllegalAccessException {
+        item = new CartItem.Builder().withDescription("imported bottle of perfume").withType(OTHERS)
+                .withPrice(new BigDecimal("27.99")).build();
 
         strategy = underTest.createFor(item);
 

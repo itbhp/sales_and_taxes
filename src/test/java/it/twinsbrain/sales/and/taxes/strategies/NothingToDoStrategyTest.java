@@ -6,8 +6,7 @@ import org.junit.Test;
 
 import java.math.BigDecimal;
 
-import static org.hamcrest.CoreMatchers.equalTo;
-import static org.hamcrest.CoreMatchers.is;
+import static org.hamcrest.Matchers.comparesEqualTo;
 import static org.junit.Assert.assertThat;
 
 public class NothingToDoStrategyTest {
@@ -26,6 +25,6 @@ public class NothingToDoStrategyTest {
 
         item = underTest.updateTaxesOn(item);
 
-        assertThat(item.priceWithTaxes, is(equalTo(item.price)));
+        assertThat(item.priceWithTaxes, comparesEqualTo(item.price));
     }
 }

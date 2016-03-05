@@ -1,19 +1,18 @@
 package it.twinsbrain.sales.and.taxes.math;
 
+import net.avh4.test.junit.Nested;
 import org.junit.Test;
-import org.junit.experimental.runners.Enclosed;
 import org.junit.runner.RunWith;
 
 import java.math.BigDecimal;
 
-import static org.hamcrest.CoreMatchers.equalTo;
-import static org.hamcrest.CoreMatchers.is;
+import static org.hamcrest.Matchers.*;
 import static org.junit.Assert.assertThat;
 
-@RunWith(Enclosed.class)
+@RunWith(Nested.class)
 public class RoundedDecimalTest {
 
-    public static class TwoPercentTest {
+    public class TwoPercentTest {
         RoundedDecimal underTest;
         BigDecimal input;
 
@@ -23,7 +22,7 @@ public class RoundedDecimalTest {
 
             underTest = new RoundedDecimal(input, "2", "100");
 
-            assertThat(underTest.getValue(), is(equalTo(new BigDecimal("17.02"))));
+            assertThat(underTest.getValue(), is(comparesEqualTo(new BigDecimal("17.02"))));
         }
 
         @Test
@@ -32,7 +31,7 @@ public class RoundedDecimalTest {
 
             underTest = new RoundedDecimal(input, "2", "100");
 
-            assertThat(underTest.getValue(), is(equalTo(new BigDecimal("17.04"))));
+            assertThat(underTest.getValue(), is(comparesEqualTo(new BigDecimal("17.04"))));
         }
 
         @Test
@@ -41,11 +40,11 @@ public class RoundedDecimalTest {
 
             underTest = new RoundedDecimal(input, "2", "100");
 
-            assertThat(underTest.getValue(), is(equalTo(new BigDecimal("17.06"))));
+            assertThat(underTest.getValue(), is(comparesEqualTo(new BigDecimal("17.06"))));
         }
     }
 
-    public static class FivePercentTest {
+    public class FivePercentTest {
         RoundedDecimal underTest;
         BigDecimal input;
 
@@ -65,9 +64,7 @@ public class RoundedDecimalTest {
 
             underTest = new RoundedDecimal(input, "5", "100");
 
-            assertThat(underTest.getValue().compareTo(new BigDecimal("17.10")), is(0));
+            assertThat(underTest.getValue(), is(comparesEqualTo(new BigDecimal("17.1"))));
         }
     }
-
-
 }

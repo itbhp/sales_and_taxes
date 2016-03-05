@@ -1,13 +1,11 @@
 package it.twinsbrain.sales.and.taxes.parser;
 
-import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
 import java.math.BigDecimal;
 
-import static org.hamcrest.CoreMatchers.equalTo;
-import static org.hamcrest.CoreMatchers.is;
+import static org.hamcrest.Matchers.comparesEqualTo;
 import static org.junit.Assert.assertThat;
 
 public class PriceParserTest {
@@ -24,6 +22,6 @@ public class PriceParserTest {
 
         BigDecimal price = underTest.readPrice(input);
 
-        assertThat(price, is(equalTo(new BigDecimal("0.85"))));
+        assertThat(price, comparesEqualTo(new BigDecimal("0.85")));
     }
 }

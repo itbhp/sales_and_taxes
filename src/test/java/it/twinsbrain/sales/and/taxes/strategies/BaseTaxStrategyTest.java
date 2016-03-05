@@ -6,8 +6,7 @@ import org.junit.Test;
 
 import java.math.BigDecimal;
 
-import static org.hamcrest.CoreMatchers.equalTo;
-import static org.hamcrest.CoreMatchers.is;
+import static org.hamcrest.Matchers.comparesEqualTo;
 import static org.junit.Assert.assertThat;
 
 public class BaseTaxStrategyTest {
@@ -26,7 +25,9 @@ public class BaseTaxStrategyTest {
 
         CartItem updatedItem = underTest.updateTaxesOn(item);
 
-        assertThat("item visited should not change", item.priceWithTaxes, is(equalTo(new BigDecimal("1.00"))));
-        assertThat("price should be 10 percent more", updatedItem.priceWithTaxes, is(equalTo(new BigDecimal("1.10"))));
+        assertThat("item visited should not change",
+                item.priceWithTaxes, comparesEqualTo(new BigDecimal("1.00")));
+        assertThat("price should be 10 percent more",
+                updatedItem.priceWithTaxes, comparesEqualTo(new BigDecimal("1.10")));
     }
 }
