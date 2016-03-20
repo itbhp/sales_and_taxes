@@ -4,19 +4,18 @@ import java.math.BigDecimal;
 
 public class RoundedDecimal {
 
-    private final BigDecimal orig;
-    private final BigDecimal roundFactor;
+    private final BigDecimal value;
 
     public RoundedDecimal(final BigDecimal orig, final String nearestUnit, final String unitBase) {
-        this.orig = orig;
-        roundFactor = new BigDecimal(unitBase).divide(new BigDecimal(nearestUnit));
+        final BigDecimal roundFactor = new BigDecimal(unitBase).divide(new BigDecimal(nearestUnit));
+        value = ceil(orig.multiply(roundFactor)).divide(roundFactor);
     }
 
-    public BigDecimal getValue() {
-         return ceil(orig.multiply(roundFactor)).divide(roundFactor);
+    public BigDecimal value() {
+        return value;
     }
 
     private BigDecimal ceil(final BigDecimal value) {
-        return new BigDecimal(Math.ceil(value.doubleValue()));
+        return value.setScale(0, BigDecimal.ROUND_UP);
     }
 }

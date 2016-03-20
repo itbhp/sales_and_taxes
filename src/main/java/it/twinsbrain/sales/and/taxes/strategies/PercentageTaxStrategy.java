@@ -11,7 +11,7 @@ public abstract class PercentageTaxStrategy implements TaxStrategy {
 
     protected CartItem applyPercentageTax(final CartItem visitee, final String taxPercentage) {
         final BigDecimal rate = new BigDecimal(taxPercentage);
-        final BigDecimal taxes = new RoundedDecimal(visitee.price.multiply(rate), "5", "100").getValue();
+        final BigDecimal taxes = new RoundedDecimal(visitee.price.multiply(rate), "5", "100").value();
         final BigDecimal priceWithTaxes = visitee.priceWithTaxes.add(taxes);
 
         int scale = 2;

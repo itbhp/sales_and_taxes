@@ -13,9 +13,12 @@ public class Receipt {
     }
 
     public String print(){
-        String receipt = itemsWithTaxes.stream().map(CartItem::toString).reduce("", (acc, curr) -> acc + curr + "\n");
-        final BigDecimal taxesSum = itemsWithTaxes.stream().map(i -> i.taxes).reduce(BigDecimal.ZERO, BigDecimal::add);
-        final BigDecimal totalPrice = itemsWithTaxes.stream().map(i -> i.priceWithTaxes).reduce(BigDecimal.ZERO, BigDecimal::add);
+        String receipt = itemsWithTaxes.stream()
+                .map(CartItem::toString).reduce("", (acc, curr) -> acc + curr + "\n");
+        final BigDecimal taxesSum = itemsWithTaxes.stream()
+                .map(i -> i.taxes).reduce(BigDecimal.ZERO, BigDecimal::add);
+        final BigDecimal totalPrice = itemsWithTaxes.stream()
+                .map(i -> i.priceWithTaxes).reduce(BigDecimal.ZERO, BigDecimal::add);
 
         receipt += "Sales Taxes: "+taxesSum.setScale(2,BigDecimal.ROUND_HALF_UP)+"\n";
         receipt += "Total: "+totalPrice.setScale(2,BigDecimal.ROUND_HALF_UP);

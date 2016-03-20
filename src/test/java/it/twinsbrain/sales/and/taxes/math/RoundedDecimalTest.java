@@ -6,7 +6,8 @@ import org.junit.runner.RunWith;
 
 import java.math.BigDecimal;
 
-import static org.hamcrest.Matchers.*;
+import static org.hamcrest.Matchers.comparesEqualTo;
+import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.assertThat;
 
 @RunWith(Nested.class)
@@ -22,7 +23,7 @@ public class RoundedDecimalTest {
 
             underTest = new RoundedDecimal(input, "2", "100");
 
-            assertThat(underTest.getValue(), is(comparesEqualTo(new BigDecimal("17.02"))));
+            assertThat(underTest.value(), is(comparesEqualTo(new BigDecimal("17.02"))));
         }
 
         @Test
@@ -31,7 +32,7 @@ public class RoundedDecimalTest {
 
             underTest = new RoundedDecimal(input, "2", "100");
 
-            assertThat(underTest.getValue(), is(comparesEqualTo(new BigDecimal("17.04"))));
+            assertThat(underTest.value(), is(comparesEqualTo(new BigDecimal("17.04"))));
         }
 
         @Test
@@ -40,7 +41,7 @@ public class RoundedDecimalTest {
 
             underTest = new RoundedDecimal(input, "2", "100");
 
-            assertThat(underTest.getValue(), is(comparesEqualTo(new BigDecimal("17.06"))));
+            assertThat(underTest.value(), is(comparesEqualTo(new BigDecimal("17.06"))));
         }
     }
 
@@ -54,17 +55,16 @@ public class RoundedDecimalTest {
 
             underTest = new RoundedDecimal(input, "5", "100");
 
-            assertThat(underTest.getValue(), is(equalTo(new BigDecimal("17.05"))));
+            assertThat(underTest.value(), comparesEqualTo(new BigDecimal("17.05")));
         }
 
         @Test
         public void uponFiveCentsDecimal() {
-
             input = new BigDecimal("17.053");
 
             underTest = new RoundedDecimal(input, "5", "100");
 
-            assertThat(underTest.getValue(), is(comparesEqualTo(new BigDecimal("17.1"))));
+            assertThat(underTest.value(), is(comparesEqualTo(new BigDecimal("17.1"))));
         }
     }
 }

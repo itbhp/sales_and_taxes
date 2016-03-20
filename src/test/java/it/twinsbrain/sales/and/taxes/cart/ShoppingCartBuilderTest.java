@@ -30,7 +30,7 @@ public class ShoppingCartBuilderTest {
 
         shoppingCart = underTest.createShoppingCartFrom(input);
 
-        List<CartItem> cartItems = shoppingCart.cartItems();
+        List<CartItem> cartItems = shoppingCart.items();
         assertThat(cartItems.size(), is(1));
 
         CartItem cartItem = cartItems.get(0);
@@ -46,19 +46,19 @@ public class ShoppingCartBuilderTest {
 
         shoppingCart = underTest.createShoppingCartFrom(input);
 
-        List<CartItem> cartItems = shoppingCart.cartItems();
+        List<CartItem> cartItems = shoppingCart.items();
         assertThat(cartItems.size(), is(2));
 
-        CartItem cartItem1 = cartItems.get(0);
-        assertThat(cartItem1.quantity, is(1));
-        assertThat(cartItem1.description, is(equalTo("music cd")));
-        assertThat(cartItem1.price, comparesEqualTo(new BigDecimal("12.99")));
-        assertThat(cartItem1.type, is(MUSIC));
+        CartItem first = cartItems.get(0);
+        assertThat(first.quantity, is(1));
+        assertThat(first.description, is(equalTo("music cd")));
+        assertThat(first.price, comparesEqualTo(new BigDecimal("12.99")));
+        assertThat(first.type, is(MUSIC));
 
-        CartItem cartItem2 = cartItems.get(1);
-        assertThat(cartItem2.quantity, is(1));
-        assertThat(cartItem2.description, is(equalTo("Harry Potter book")));
-        assertThat(cartItem2.price, comparesEqualTo(new BigDecimal("25.99")));
-        assertThat(cartItem2.type, is(BOOK));
+        CartItem second = cartItems.get(1);
+        assertThat(second.quantity, is(1));
+        assertThat(second.description, is(equalTo("Harry Potter book")));
+        assertThat(second.price, comparesEqualTo(new BigDecimal("25.99")));
+        assertThat(second.type, is(BOOK));
     }
 }

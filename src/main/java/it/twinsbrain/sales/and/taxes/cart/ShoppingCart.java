@@ -26,10 +26,12 @@ public class ShoppingCart {
     }
 
     public void add(CartItem item) {
-        items.add(item);
+        synchronized (items) {
+            items.add(item);
+        }
     }
 
-    protected List<CartItem> cartItems() {
+    protected List<CartItem> items() {
         return Collections.unmodifiableList(items);
     }
 }
