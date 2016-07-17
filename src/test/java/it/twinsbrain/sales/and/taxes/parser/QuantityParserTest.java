@@ -25,7 +25,7 @@ public class QuantityParserTest {
 
     @Test
     public void quantity_read_well_formed_input() {
-        sampleInput = "1 bootle of perfume: 31";
+        sampleInput = "1 bottle of perfume: 31";
 
         quantity = underTest.readQuantity(sampleInput);
 
@@ -34,7 +34,7 @@ public class QuantityParserTest {
 
     @Test
     public void exception_no_well_formed_input() {
-        sampleInput = "One bootle of perfume: 31";
+        sampleInput = "One bottle of perfume: 31";
 
         exception.expect(NumberFormatException.class);
 

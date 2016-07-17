@@ -22,7 +22,6 @@ public abstract class PercentageTaxStrategy implements TaxStrategy {
                 .withDescription(visitee.description)
                 .withTaxes(taxes.add(visitee.taxes).setScale(scale, roundingMode))
                 .withPriceWithTaxes(priceWithTaxes.setScale(scale, roundingMode))
-                .withTaxPercentage(rate.add(visitee.taxPercentage).setScale(scale, roundingMode))
                 .build();
     }
 }

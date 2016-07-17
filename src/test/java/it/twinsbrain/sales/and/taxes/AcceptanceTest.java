@@ -69,7 +69,7 @@ import static org.junit.Assert.assertThat;
  * Sales Taxes: 6.70
  * Total: 74.68
  */
-public class SalesAndTaxesTest {
+public class AcceptanceTest {
 
     ShoppingCart underTest;
     private String output;

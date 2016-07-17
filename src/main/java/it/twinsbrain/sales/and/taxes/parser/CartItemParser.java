@@ -12,10 +12,10 @@ public class CartItemParser {
 
     public static final int DESCRIPTION = 2;
     public static final int PRICE = 3;
-    private final String regexPattern = "(\\d+)\\s([\\w\\s]+)\\sat\\s(\\d+\\.\\d+)";
     private final Pattern inputPattern;
 
     public CartItemParser(){
+        String regexPattern = "(\\d+)\\s([\\w\\s]+)\\sat\\s(\\d+\\.\\d+)";
         inputPattern = Pattern.compile(regexPattern);
     }
 
