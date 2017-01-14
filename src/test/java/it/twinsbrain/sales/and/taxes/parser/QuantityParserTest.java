@@ -10,9 +10,6 @@ import static org.junit.Assert.assertThat;
 
 public class QuantityParserTest {
 
-    @Rule
-    public ExpectedException exception = ExpectedException.none();
-
     private CartItemParser underTest;
 
     private String sampleInput;
@@ -32,11 +29,9 @@ public class QuantityParserTest {
         assertThat(quantity, is(1));
     }
 
-    @Test
-    public void itShoulRaiseExceptionOnNotWellFormedInput() {
+    @Test(expected = NumberFormatException.class)
+    public void itShouldRaiseExceptionOnNotWellFormedInput() {
         sampleInput = "One bottle of perfume: 31";
-
-        exception.expect(NumberFormatException.class);
 
         quantity = underTest.readQuantity(sampleInput);
     }
