@@ -3,10 +3,6 @@ package it.twinsbrain.sales.and.taxes.cart;
 import it.twinsbrain.sales.and.taxes.parser.CartItemParser;
 import it.twinsbrain.sales.and.taxes.strategies.TaxStrategyFactory;
 
-import java.math.BigDecimal;
-import java.util.Arrays;
-import java.util.stream.Collectors;
-
 import static java.util.Arrays.stream;
 import static java.util.stream.Collectors.toList;
 
