@@ -63,7 +63,7 @@ public class StrategyFactoryTest {
     }
 
     @Test
-    public void ImportedBottleOfPerfumeHaveBaseAndImportedTaxes()
+    public void importedBottleOfPerfumeHaveBaseAndImportedTaxes()
             throws NoSuchFieldException, IllegalAccessException {
         item = new CartItem.Builder().withDescription("imported bottle of perfume").withType(OTHERS)
                 .withPrice(new BigDecimal("27.99")).build();

@@ -30,7 +30,7 @@ public class ImportedTaxStrategyTest {
     }
 
     @Test
-    public void imported_chocolate() {
+    public void importedChocolate() {
         item = new CartItem.Builder().withPrice(new BigDecimal("11.25")).build();
 
         item = underTest.updateTaxesOn(item);
