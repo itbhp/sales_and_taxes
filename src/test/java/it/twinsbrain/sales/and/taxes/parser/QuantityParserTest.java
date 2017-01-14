@@ -33,7 +33,7 @@ public class QuantityParserTest {
     }
 
     @Test
-    public void exceptionOnNotWellFormedInput() {
+    public void itShoulRaiseExceptionOnNotWellFormedInput() {
         sampleInput = "One bottle of perfume: 31";
 
         exception.expect(NumberFormatException.class);

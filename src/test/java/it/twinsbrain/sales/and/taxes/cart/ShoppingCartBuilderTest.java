@@ -20,7 +20,7 @@ public class ShoppingCartBuilderTest {
     private ShoppingCart shoppingCart;
 
     @Before
-    public void setup() {
+    public void setUp() {
         underTest = new ShoppingCartBuilder(new CartItemParser(), new TaxStrategyFactory());
     }
 

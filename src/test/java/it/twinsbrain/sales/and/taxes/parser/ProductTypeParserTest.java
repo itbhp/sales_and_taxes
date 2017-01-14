@@ -16,7 +16,7 @@ public class ProductTypeParserTest {
     private ProductType readProductType;
 
     @Before
-    public void setup() {
+    public void setUp() {
         underTest = new CartItemParser();
     }
 

@@ -17,7 +17,7 @@ public class StrategyFactoryTest {
     private TaxStrategy strategy;
 
     @Before
-    public void setup() {
+    public void setUp() {
         underTest = new TaxStrategyFactory();
     }
 

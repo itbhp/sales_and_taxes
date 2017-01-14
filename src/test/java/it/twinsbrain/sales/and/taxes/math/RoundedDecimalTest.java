@@ -14,8 +14,8 @@ import static org.junit.Assert.assertThat;
 public class RoundedDecimalTest {
 
     public class TwoPercentTest {
-        RoundedDecimal underTest;
-        BigDecimal input;
+        private RoundedDecimal underTest;
+        private BigDecimal input;
 
         @Test
         public void belowTwoCentsDecimal() {
@@ -46,8 +46,8 @@ public class RoundedDecimalTest {
     }
 
     public class FivePercentTest {
-        RoundedDecimal underTest;
-        BigDecimal input;
+        private RoundedDecimal underTest;
+        private BigDecimal input;
 
         @Test
         public void belowFiveCentsDecimal() {

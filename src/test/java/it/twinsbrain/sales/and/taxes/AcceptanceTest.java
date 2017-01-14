@@ -71,7 +71,7 @@ import static org.junit.Assert.assertThat;
  */
 public class AcceptanceTest {
 
-    ShoppingCart underTest;
+    private ShoppingCart underTest;
     private String output;
 
     @Test

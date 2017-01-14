@@ -14,7 +14,7 @@ public class NothingToDoStrategyTest {
     private TaxStrategy underTest;
 
     @Before
-    public void setup() {
+    public void setUp() {
         underTest = new NothingToDoStrategy();
     }
 

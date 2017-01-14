@@ -15,7 +15,7 @@ public class ImportedTaxStrategyTest {
     private CartItem item;
 
     @Before
-    public void setup() {
+    public void setUp() {
         underTest = new ImportedTaxStrategy();
     }
 

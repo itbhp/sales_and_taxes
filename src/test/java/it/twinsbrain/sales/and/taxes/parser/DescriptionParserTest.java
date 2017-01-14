@@ -12,7 +12,7 @@ public class DescriptionParserTest {
     private CartItemParser underTest;
 
     @Before
-    public void setup() {
+    public void setUp() {
         underTest = new CartItemParser();
     }
 
