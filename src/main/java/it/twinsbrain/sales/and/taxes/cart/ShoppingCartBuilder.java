@@ -4,6 +4,11 @@ import it.twinsbrain.sales.and.taxes.parser.CartItemParser;
 import it.twinsbrain.sales.and.taxes.strategies.TaxStrategyFactory;
 
 import java.math.BigDecimal;
+import java.util.Arrays;
+import java.util.stream.Collectors;
+
+import static java.util.Arrays.stream;
+import static java.util.stream.Collectors.toList;
 
 public class ShoppingCartBuilder {
 
@@ -16,12 +21,8 @@ public class ShoppingCartBuilder {
     }
 
     public ShoppingCart createShoppingCartFrom(final String order) {
-        final ShoppingCart cart = new ShoppingCart(taxStrategyFactory);
-        final String[] orderItems = order.split("\n");
-        for (String orderItem : orderItems) {
-            cart.add(createCartItemFrom(orderItem));
-        }
-        return cart;
+        return new ShoppingCart(taxStrategyFactory,
+                stream(order.split("\n")).map(this::createCartItemFrom).collect(toList()));
     }
 
     private CartItem createCartItemFrom(String input) {

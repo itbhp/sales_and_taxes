@@ -25,7 +25,7 @@ public class StrategyFactoryTest {
     public void medical_not_imported_are_tax_excluded() {
         item = new CartItem.Builder().withDescription("bottle of pills for headache").withType(MEDICAL).build();
 
-        strategy = underTest.createFor(item);
+        strategy = underTest.taxFor(item);
 
         assertThat(strategy, is(instanceOf(NothingToDoStrategy.class)));
     }
@@ -35,7 +35,7 @@ public class StrategyFactoryTest {
         item = new CartItem.Builder().withDescription("imported bottle of pills for headache")
                 .withType(MEDICAL).build();
 
-        strategy = underTest.createFor(item);
+        strategy = underTest.taxFor(item);
 
         assertThat(strategy, is(instanceOf(ImportedTaxStrategy.class)));
     }
@@ -44,7 +44,7 @@ public class StrategyFactoryTest {
     public void cd_not_imported_have_only_base_taxes() {
         item = new CartItem.Builder().withDescription("Queen compilation cd").withType(MUSIC).build();
 
-        strategy = underTest.createFor(item);
+        strategy = underTest.taxFor(item);
 
         assertThat(strategy, is(instanceOf(BaseTaxStrategy.class)));
     }
@@ -54,7 +54,7 @@ public class StrategyFactoryTest {
         item = new CartItem.Builder().withDescription("imported Queen compilation cd").withType(MUSIC)
                 .withPrice(new BigDecimal("1.00")).build();
 
-        strategy = underTest.createFor(item);
+        strategy = underTest.taxFor(item);
 
         assertThat(strategy, is(instanceOf(ComposedStrategy.class)));
         ComposedStrategy toVerify = (ComposedStrategy) strategy;
@@ -68,7 +68,7 @@ public class StrategyFactoryTest {
         item = new CartItem.Builder().withDescription("imported bottle of perfume").withType(OTHERS)
                 .withPrice(new BigDecimal("27.99")).build();
 
-        strategy = underTest.createFor(item);
+        strategy = underTest.taxFor(item);
 
         assertThat(strategy, is(instanceOf(ComposedStrategy.class)));
         ComposedStrategy toVerify = (ComposedStrategy) strategy;

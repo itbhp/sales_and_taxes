@@ -3,6 +3,8 @@ package it.twinsbrain.sales.and.taxes.cart;
 import java.math.BigDecimal;
 import java.util.List;
 
+import static java.math.BigDecimal.ZERO;
+
 public class Receipt {
 
     private final List<CartItem> itemsWithTaxes;
@@ -16,9 +18,9 @@ public class Receipt {
         String receipt = itemsWithTaxes.stream()
                 .map(CartItem::toString).reduce("", (acc, curr) -> acc + curr + "\n");
         final BigDecimal taxesSum = itemsWithTaxes.stream()
-                .map(i -> i.taxes).reduce(BigDecimal.ZERO, BigDecimal::add);
+                .map(i -> i.taxes).reduce(ZERO, BigDecimal::add);
         final BigDecimal totalPrice = itemsWithTaxes.stream()
-                .map(i -> i.priceWithTaxes).reduce(BigDecimal.ZERO, BigDecimal::add);
+                .map(i -> i.priceWithTaxes).reduce(ZERO, BigDecimal::add);
 
         receipt += "Sales Taxes: "+taxesSum.setScale(2,BigDecimal.ROUND_HALF_UP)+"\n";
         receipt += "Total: "+totalPrice.setScale(2,BigDecimal.ROUND_HALF_UP);
