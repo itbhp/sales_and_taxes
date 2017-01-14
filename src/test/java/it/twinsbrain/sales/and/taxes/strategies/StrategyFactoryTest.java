@@ -22,7 +22,7 @@ public class StrategyFactoryTest {
     }
 
     @Test
-    public void medical_not_imported_are_tax_excluded() {
+    public void medicalNotImportedAreTaxExcluded() {
         item = new CartItem.Builder().withDescription("bottle of pills for headache").withType(MEDICAL).build();
 
         strategy = underTest.taxFor(item);
@@ -31,7 +31,7 @@ public class StrategyFactoryTest {
     }
 
     @Test
-    public void medical_imported_have_only_import_taxes() {
+    public void medicalImportedHaveOnlyImportTaxes() {
         item = new CartItem.Builder().withDescription("imported bottle of pills for headache")
                 .withType(MEDICAL).build();
 
@@ -41,7 +41,7 @@ public class StrategyFactoryTest {
     }
 
     @Test
-    public void cd_not_imported_have_only_base_taxes() {
+    public void cdNotImportedHaveOnlyBaseTaxes() {
         item = new CartItem.Builder().withDescription("Queen compilation cd").withType(MUSIC).build();
 
         strategy = underTest.taxFor(item);
@@ -50,7 +50,7 @@ public class StrategyFactoryTest {
     }
 
     @Test
-    public void cd_imported_have_base_and_imported_taxes() throws NoSuchFieldException, IllegalAccessException {
+    public void cdImportedHaveBaseAndImportedTaxes() throws NoSuchFieldException, IllegalAccessException {
         item = new CartItem.Builder().withDescription("imported Queen compilation cd").withType(MUSIC)
                 .withPrice(new BigDecimal("1.00")).build();
 
@@ -63,7 +63,7 @@ public class StrategyFactoryTest {
     }
 
     @Test
-    public void imported_bottle_of_perfume_have_base_and_imported_taxes()
+    public void ImportedBottleOfPerfumeHaveBaseAndImportedTaxes()
             throws NoSuchFieldException, IllegalAccessException {
         item = new CartItem.Builder().withDescription("imported bottle of perfume").withType(OTHERS)
                 .withPrice(new BigDecimal("27.99")).build();

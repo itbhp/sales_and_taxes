@@ -21,7 +21,7 @@ public class ProductTypeParserTest {
     }
 
     @Test
-    public void chocolate_is_food() {
+    public void chocolateIsFood() {
         input = "1 chocolate bar at 0.85";
 
         readProductType = underTest.readProductType(input);
@@ -30,7 +30,7 @@ public class ProductTypeParserTest {
     }
 
     @Test
-    public void bread_is_food() {
+    public void breadIsFood() {
         input = "1 bread pack 20 slices at 2.85";
 
         readProductType = underTest.readProductType(input);
@@ -39,7 +39,7 @@ public class ProductTypeParserTest {
     }
 
     @Test
-    public void pills_are_medicine() {
+    public void pillsAreMedicine() {
         input = "1 bottle of pills at 2.85";
 
         readProductType = underTest.readProductType(input);
@@ -48,7 +48,7 @@ public class ProductTypeParserTest {
     }
 
     @Test
-    public void any_book_is_a_book() {
+    public void anyBookIsABook() {
         input = "1 Moccia's book at 0.00";
 
         readProductType = underTest.readProductType(input);
@@ -57,7 +57,7 @@ public class ProductTypeParserTest {
     }
 
     @Test
-    public void a_cd_is_music() {
+    public void aCdIsMusic() {
         input = "1 AC/DC the gold collection CD at 20.00";
 
         readProductType = underTest.readProductType(input);
@@ -66,7 +66,7 @@ public class ProductTypeParserTest {
     }
 
     @Test
-    public void an_mp3_is_music() {
+    public void anMp3IsMusic() {
         input = "1 Dire Straits - Walk of Life mp3 at 0.99";
 
         readProductType = underTest.readProductType(input);
@@ -75,7 +75,7 @@ public class ProductTypeParserTest {
     }
 
     @Test
-    public void anything_else_is_others() {
+    public void anythingElseIsOthers() {
         input = "1 imported bottle of perfume at 27.99";
 
         readProductType = underTest.readProductType(input);

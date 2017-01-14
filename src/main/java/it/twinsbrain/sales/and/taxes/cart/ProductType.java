@@ -12,13 +12,13 @@ public enum ProductType {
     BOOK(singletonList("book")),
     MUSIC(asList("cd", "mp3")),
     MEDICAL(singletonList("pills")),
-    OTHERS(Collections.<String>emptyList());
+    OTHERS(Collections.emptyList());
+
+    private final List<String> keywords;
 
     ProductType(final List<String> keywords) {
         this.keywords = keywords;
     }
-
-    private final List<String> keywords;
 
     public boolean match(final String productDescription) {
         return keywords.stream().anyMatch((keyword) ->

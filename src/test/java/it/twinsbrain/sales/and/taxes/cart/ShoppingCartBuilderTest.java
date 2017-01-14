@@ -25,7 +25,7 @@ public class ShoppingCartBuilderTest {
     }
 
     @Test
-    public void one_product_one_cart_item() {
+    public void oneProductOneCartItem() {
         input = "1 music cd at 12.99";
 
         shoppingCart = underTest.createShoppingCartFrom(input);
@@ -41,7 +41,7 @@ public class ShoppingCartBuilderTest {
     }
 
     @Test
-    public void two_products_two_cart_items() {
+    public void twoProductsTwoCartItems() {
         input = "1 music cd at 12.99\n1 Harry Potter book at 25.99";
 
         shoppingCart = underTest.createShoppingCartFrom(input);
