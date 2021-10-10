@@ -13,8 +13,14 @@ public class CartItem {
     public final BigDecimal taxes;
     public final BigDecimal priceWithTaxes;
 
-    private CartItem(final ProductType type, final int quantity, final BigDecimal price,
-                     final String description, final BigDecimal taxes, final BigDecimal priceWithTaxes) {
+    private CartItem(
+            final ProductType type,
+            final int quantity,
+            final BigDecimal price,
+            final String description,
+            final BigDecimal taxes,
+            final BigDecimal priceWithTaxes
+    ) {
         this.type = type;
         this.quantity = quantity;
         this.price = price;
@@ -23,7 +29,7 @@ public class CartItem {
         this.priceWithTaxes = priceWithTaxes;
     }
 
-    public boolean isImported(){
+    public boolean isImported() {
         return description.toLowerCase().contains("imported");
     }
 

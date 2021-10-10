@@ -14,7 +14,7 @@ public class Receipt {
         this.itemsWithTaxes = itemsWithTaxes;
     }
 
-    public String print(){
+    public String print() {
         String receipt = itemsWithTaxes.stream()
                 .map(CartItem::toString).reduce("", (acc, curr) -> acc + curr + "\n");
         final BigDecimal taxesSum = itemsWithTaxes.stream()
@@ -22,8 +22,8 @@ public class Receipt {
         final BigDecimal totalPrice = itemsWithTaxes.stream()
                 .map(i -> i.priceWithTaxes).reduce(ZERO, BigDecimal::add);
 
-        receipt += "Sales Taxes: "+taxesSum.setScale(2,BigDecimal.ROUND_HALF_UP)+"\n";
-        receipt += "Total: "+totalPrice.setScale(2,BigDecimal.ROUND_HALF_UP);
+        receipt += "Sales Taxes: " + taxesSum + "\n";
+        receipt += "Total: " + totalPrice;
         return receipt;
     }
 }
