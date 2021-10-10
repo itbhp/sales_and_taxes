@@ -1,7 +1,6 @@
 package it.twinsbrain.sales.and.taxes.strategies;
 
 import it.twinsbrain.sales.and.taxes.cart.CartItem;
-import org.hamcrest.MatcherAssert;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
