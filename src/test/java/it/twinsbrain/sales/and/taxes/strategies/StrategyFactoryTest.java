@@ -1,14 +1,14 @@
 package it.twinsbrain.sales.and.taxes.strategies;
 
 import it.twinsbrain.sales.and.taxes.cart.CartItem;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 import java.math.BigDecimal;
 
 import static it.twinsbrain.sales.and.taxes.cart.ProductType.*;
+import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.*;
-import static org.junit.Assert.assertThat;
 
 public class StrategyFactoryTest {
 
@@ -16,7 +16,7 @@ public class StrategyFactoryTest {
     private CartItem item;
     private TaxStrategy strategy;
 
-    @Before
+    @BeforeEach
     public void setUp() {
         underTest = new TaxStrategyFactory();
     }
@@ -50,7 +50,7 @@ public class StrategyFactoryTest {
     }
 
     @Test
-    public void cdImportedHaveBaseAndImportedTaxes() throws NoSuchFieldException, IllegalAccessException {
+    public void cdImportedHaveBaseAndImportedTaxes() {
         item = new CartItem.Builder().withDescription("imported Queen compilation cd").withType(MUSIC)
                 .withPrice(new BigDecimal("1.00")).build();
 
@@ -63,8 +63,7 @@ public class StrategyFactoryTest {
     }
 
     @Test
-    public void importedBottleOfPerfumeHaveBaseAndImportedTaxes()
-            throws NoSuchFieldException, IllegalAccessException {
+    public void importedBottleOfPerfumeHaveBaseAndImportedTaxes() {
         item = new CartItem.Builder().withDescription("imported bottle of perfume").withType(OTHERS)
                 .withPrice(new BigDecimal("27.99")).build();
 

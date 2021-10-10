@@ -5,17 +5,18 @@ import it.twinsbrain.sales.and.taxes.cart.ShoppingCart;
 import it.twinsbrain.sales.and.taxes.cart.ShoppingCartBuilder;
 import it.twinsbrain.sales.and.taxes.parser.CartItemParser;
 import it.twinsbrain.sales.and.taxes.strategies.TaxStrategyFactory;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
 import java.net.URISyntaxException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.Objects;
 
+import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.is;
-import static org.junit.Assert.assertThat;
 
 /**
  * SALES TAXES
@@ -105,8 +106,8 @@ public class AcceptanceTest {
     }
 
     private String readTextFile(String path) throws IOException, URISyntaxException {
-        Path resolvedPath = Paths.get(this.getClass().getResource(path).toURI());
-        return new String(Files.readAllBytes(resolvedPath), "UTF-8");
+        Path resolvedPath = Paths.get(Objects.requireNonNull(this.getClass().getResource(path)).toURI());
+        return Files.readString(resolvedPath);
     }
 
 }

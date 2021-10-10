@@ -1,12 +1,12 @@
 package it.twinsbrain.sales.and.taxes.parser;
 
 import it.twinsbrain.sales.and.taxes.cart.ProductType;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 import static it.twinsbrain.sales.and.taxes.cart.ProductType.*;
+import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.is;
-import static org.junit.Assert.assertThat;
 
 public class ProductTypeParserTest {
 
@@ -15,7 +15,7 @@ public class ProductTypeParserTest {
     private String input;
     private ProductType readProductType;
 
-    @Before
+    @BeforeEach
     public void setUp() {
         underTest = new CartItemParser();
     }

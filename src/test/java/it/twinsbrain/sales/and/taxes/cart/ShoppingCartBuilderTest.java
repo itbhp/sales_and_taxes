@@ -2,16 +2,16 @@ package it.twinsbrain.sales.and.taxes.cart;
 
 import it.twinsbrain.sales.and.taxes.parser.CartItemParser;
 import it.twinsbrain.sales.and.taxes.strategies.TaxStrategyFactory;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 import java.math.BigDecimal;
 import java.util.List;
 
 import static it.twinsbrain.sales.and.taxes.cart.ProductType.BOOK;
 import static it.twinsbrain.sales.and.taxes.cart.ProductType.MUSIC;
+import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.*;
-import static org.junit.Assert.assertThat;
 
 public class ShoppingCartBuilderTest {
 
@@ -19,7 +19,7 @@ public class ShoppingCartBuilderTest {
     private String input;
     private ShoppingCart shoppingCart;
 
-    @Before
+    @BeforeEach
     public void setUp() {
         underTest = new ShoppingCartBuilder(new CartItemParser(), new TaxStrategyFactory());
     }

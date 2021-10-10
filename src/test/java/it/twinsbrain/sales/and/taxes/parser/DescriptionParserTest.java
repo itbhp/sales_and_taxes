@@ -1,17 +1,18 @@
 package it.twinsbrain.sales.and.taxes.parser;
 
-import org.junit.Before;
-import org.junit.Test;
 
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+
+import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.is;
-import static org.junit.Assert.assertThat;
 
 public class DescriptionParserTest {
 
     private CartItemParser underTest;
 
-    @Before
+    @BeforeEach
     public void setUp() {
         underTest = new CartItemParser();
     }

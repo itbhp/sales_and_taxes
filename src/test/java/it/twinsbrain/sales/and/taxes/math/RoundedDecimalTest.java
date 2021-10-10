@@ -1,18 +1,17 @@
 package it.twinsbrain.sales.and.taxes.math;
 
-import net.avh4.test.junit.Nested;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.Nested;
+import org.junit.jupiter.api.Test;
 
 import java.math.BigDecimal;
 
+import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.comparesEqualTo;
 import static org.hamcrest.Matchers.is;
-import static org.junit.Assert.assertThat;
 
-@RunWith(Nested.class)
 public class RoundedDecimalTest {
 
+    @Nested
     public class TwoPercentTest {
         private RoundedDecimal underTest;
         private BigDecimal input;
@@ -45,6 +44,7 @@ public class RoundedDecimalTest {
         }
     }
 
+    @Nested
     public class FivePercentTest {
         private RoundedDecimal underTest;
         private BigDecimal input;
