@@ -5,11 +5,11 @@ repositories {
 }
 
 dependencies {
-    compile 'org.slf4j:slf4j-api:1.7.7'
+    implementation 'org.slf4j:slf4j-api:1.7.32'
 
-    testCompile 'junit:junit:4.12'
-    testCompile 'org.hamcrest:hamcrest-library:1.3'
-    testCompile 'net.avh4.test:junit-nested:1.0.1'
+    testImplementation 'junit:junit:4.13'
+    testImplementation 'org.hamcrest:hamcrest-library:1.3'
+    testImplementation 'net.avh4.test:junit-nested:1.0.1'
 }
 
 
