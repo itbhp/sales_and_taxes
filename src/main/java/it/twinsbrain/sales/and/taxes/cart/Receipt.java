@@ -15,15 +15,23 @@ public class Receipt {
     }
 
     public String print() {
-        String receipt = itemsWithTaxes.stream()
-                .map(CartItem::toString).reduce("", (acc, curr) -> acc + curr + "\n");
-        final BigDecimal taxesSum = itemsWithTaxes.stream()
-                .map(i -> i.taxes).reduce(ZERO, BigDecimal::add);
-        final BigDecimal totalPrice = itemsWithTaxes.stream()
-                .map(i -> i.priceWithTaxes).reduce(ZERO, BigDecimal::add);
+        return listItems()
+                + "Sales Taxes: " + taxesSum() + "\n"
+                + "Total: " + totalPrice();
+    }
 
-        receipt += "Sales Taxes: " + taxesSum + "\n";
-        receipt += "Total: " + totalPrice;
-        return receipt;
+    private BigDecimal totalPrice() {
+        return itemsWithTaxes.stream()
+                .map(i -> i.priceWithTaxes).reduce(ZERO, BigDecimal::add);
+    }
+
+    private BigDecimal taxesSum() {
+        return itemsWithTaxes.stream()
+                .map(i -> i.taxes).reduce(ZERO, BigDecimal::add);
+    }
+
+    private String listItems() {
+        return itemsWithTaxes.stream()
+                .map(CartItem::toString).reduce("", (acc, curr) -> acc + curr + "\n");
     }
 }

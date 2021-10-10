@@ -11,14 +11,21 @@ public class ShoppingCartBuilder {
     private final CartItemParser parser;
     private final TaxStrategyFactory taxStrategyFactory;
 
-    public ShoppingCartBuilder(final CartItemParser parser, final TaxStrategyFactory taxStrategyFactory) {
+    public ShoppingCartBuilder(
+            final CartItemParser parser,
+            final TaxStrategyFactory taxStrategyFactory
+    ) {
         this.parser = parser;
         this.taxStrategyFactory = taxStrategyFactory;
     }
 
     public ShoppingCart createShoppingCartFrom(final String order) {
-        return new ShoppingCart(taxStrategyFactory,
-                stream(order.split("\n")).map(this::createCartItemFrom).collect(toList()));
+        return new ShoppingCart(
+                taxStrategyFactory,
+                stream(order.split("\n"))
+                        .map(this::createCartItemFrom)
+                        .collect(toList())
+        );
     }
 
     private CartItem createCartItemFrom(String input) {
