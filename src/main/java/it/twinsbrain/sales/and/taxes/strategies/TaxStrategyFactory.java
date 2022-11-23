@@ -11,19 +11,19 @@ import static java.util.Collections.unmodifiableList;
 
 public class TaxStrategyFactory {
 
-    private final List<ProductType> taxExcluded = unmodifiableList(asList(BOOK, FOOD, MEDICAL));
+    private final List<ProductType> taxExcluded = List.of(BOOK, FOOD, MEDICAL);
 
-    public TaxStrategy taxFor(final CartItem item){
-        if(item.isImported()){
-            if(taxExcluded.contains(item.type)){
+    public TaxStrategy taxFor(final CartItem item) {
+        if (item.isImported()) {
+            if (taxExcluded.contains(item.type)) {
                 return new ImportedTaxStrategy();
-            }else {
+            } else {
                 return new ComposedStrategy(new ImportedTaxStrategy(), new BaseTaxStrategy());
             }
-        }else{
-            if(taxExcluded.contains(item.type)){
+        } else {
+            if (taxExcluded.contains(item.type)) {
                 return new NothingToDoStrategy();
-            }else {
+            } else {
                 return new BaseTaxStrategy();
             }
         }

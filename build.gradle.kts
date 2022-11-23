@@ -1,6 +1,8 @@
 plugins {
-  kotlin("jvm") version "1.5.31"
+  kotlin("jvm") version "1.7.21"
 }
+
+val javaVersion = "17"
 
 apply(plugin = "java")
 
@@ -8,14 +10,35 @@ repositories {
   mavenCentral()
 }
 
-dependencies {
-  implementation("org.slf4j:slf4j-api:1.7.32")
+java {
+  toolchain {
+    languageVersion.set(JavaLanguageVersion.of(javaVersion))
+  }
+}
 
-  testImplementation("org.junit.jupiter:junit-jupiter:5.8.1")
+kotlin {
+  jvmToolchain {
+    languageVersion.set(JavaLanguageVersion.of(javaVersion))
+  }
+}
+
+dependencies {
+  implementation("org.slf4j:slf4j-api:2.0.4")
+
+  testImplementation("org.junit.jupiter:junit-jupiter:5.9.0")
   testImplementation("org.hamcrest:hamcrest-library:2.2")
 }
 
 
 tasks.test {
   useJUnitPlatform()
+
+  reports {
+    junitXml.setEnabled(false)
+    html.setEnabled(true)
+  }
+
+  testLogging {
+    events("standardOut", "started", "passed", "skipped", "failed")
+  }
 }
