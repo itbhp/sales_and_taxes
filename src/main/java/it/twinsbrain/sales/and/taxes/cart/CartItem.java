@@ -3,6 +3,7 @@ package it.twinsbrain.sales.and.taxes.cart;
 import it.twinsbrain.sales.and.taxes.strategies.TaxStrategy;
 
 import java.math.BigDecimal;
+import java.util.function.BiFunction;
 
 public class CartItem {
 
@@ -37,9 +38,32 @@ public class CartItem {
         return visitor.updateTaxesOn(this);
     }
 
+    public <T> CartItem copyWith(Change<T> change){
+        Builder builder = Builder.from(this);
+        return change.applyChangeTo(builder).build();
+    }
+
     @Override
     public String toString() {
         return quantity + " " + description + ": " + priceWithTaxes;
+    }
+
+    public static class Change<T> {
+        private final BiFunction<Builder, T, Builder> modifier;
+        private final T newValue;
+
+
+        public static <T> Change<T> change(BiFunction<Builder, T, Builder> modifier, T newValue) {
+            return new Change<>(modifier, newValue);
+        }
+        public Change(BiFunction<Builder, T, Builder> modifier, T newValue) {
+            this.modifier = modifier;
+            this.newValue = newValue;
+        }
+
+        public Builder applyChangeTo(Builder builder){
+            return modifier.apply(builder, newValue);
+        }
     }
 
     public static class Builder {
@@ -49,6 +73,16 @@ public class CartItem {
         private String description;
         private BigDecimal taxes = BigDecimal.ZERO;
         private BigDecimal priceWithTaxes = BigDecimal.ZERO;
+
+        public static Builder from(CartItem previous){
+            return new CartItem.Builder()
+                    .withType(previous.type)
+                    .withQuantity(previous.quantity)
+                    .withPrice(previous.price)
+                    .withDescription(previous.description)
+                    .withTaxes(previous.taxes)
+                    .withPriceWithTaxes(previous.priceWithTaxes);
+        }
 
         public Builder withType(final ProductType type) {
             this.type = type;

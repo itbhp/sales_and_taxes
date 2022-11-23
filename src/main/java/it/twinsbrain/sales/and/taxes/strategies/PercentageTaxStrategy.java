@@ -1,10 +1,13 @@
 package it.twinsbrain.sales.and.taxes.strategies;
 
 import it.twinsbrain.sales.and.taxes.cart.CartItem;
+import it.twinsbrain.sales.and.taxes.cart.CartItem.Builder;
 import it.twinsbrain.sales.and.taxes.math.RoundedDecimal;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
+
+import static it.twinsbrain.sales.and.taxes.cart.CartItem.Change.change;
 
 public abstract class PercentageTaxStrategy implements TaxStrategy {
     private final RoundingMode roundingMode = RoundingMode.CEILING;
@@ -15,13 +18,8 @@ public abstract class PercentageTaxStrategy implements TaxStrategy {
         final BigDecimal priceWithTaxes = visitee.priceWithTaxes.add(taxes);
 
         int scale = 2;
-        return new CartItem.Builder()
-                .withType(visitee.type)
-                .withQuantity(visitee.quantity)
-                .withPrice(visitee.price)
-                .withDescription(visitee.description)
-                .withTaxes(taxes.add(visitee.taxes).setScale(scale, roundingMode))
-                .withPriceWithTaxes(priceWithTaxes.setScale(scale, roundingMode))
-                .build();
+        return visitee
+                .copyWith(change(Builder::withTaxes, taxes.add(visitee.taxes).setScale(scale, roundingMode)))
+                .copyWith(change(Builder::withPriceWithTaxes, priceWithTaxes.setScale(scale, roundingMode)));
     }
 }
