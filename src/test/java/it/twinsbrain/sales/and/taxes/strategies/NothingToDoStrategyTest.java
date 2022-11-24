@@ -21,7 +21,7 @@ public class NothingToDoStrategyTest {
 
     @Test
     public void itShouldDoNothing() {
-        CartItem item = new CartItem.Builder().withPrice(new BigDecimal("1.99")).build();
+        var item = new CartItem.Builder().withPrice(new BigDecimal("1.99")).build();
 
         item = underTest.updateTaxesOn(item);
 

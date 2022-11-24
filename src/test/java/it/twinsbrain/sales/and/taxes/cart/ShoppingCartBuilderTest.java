@@ -30,10 +30,10 @@ public class ShoppingCartBuilderTest {
 
         shoppingCart = underTest.createShoppingCartFrom(input);
 
-        List<CartItem> cartItems = shoppingCart.items();
+        var cartItems = shoppingCart.items();
         assertThat(cartItems.size(), is(1));
 
-        CartItem cartItem = cartItems.get(0);
+        var cartItem = cartItems.get(0);
         assertThat(cartItem.quantity, is(1));
         assertThat(cartItem.description, is(equalTo("music cd")));
         assertThat(cartItem.price, comparesEqualTo(new BigDecimal("12.99")));
@@ -46,16 +46,16 @@ public class ShoppingCartBuilderTest {
 
         shoppingCart = underTest.createShoppingCartFrom(input);
 
-        List<CartItem> cartItems = shoppingCart.items();
+        var cartItems = shoppingCart.items();
         assertThat(cartItems.size(), is(2));
 
-        CartItem first = cartItems.get(0);
+        var first = cartItems.get(0);
         assertThat(first.quantity, is(1));
         assertThat(first.description, is(equalTo("music cd")));
         assertThat(first.price, comparesEqualTo(new BigDecimal("12.99")));
         assertThat(first.type, is(MUSIC));
 
-        CartItem second = cartItems.get(1);
+        var second = cartItems.get(1);
         assertThat(second.quantity, is(1));
         assertThat(second.description, is(equalTo("Harry Potter book")));
         assertThat(second.price, comparesEqualTo(new BigDecimal("25.99")));

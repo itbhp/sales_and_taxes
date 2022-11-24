@@ -19,9 +19,9 @@ public class DescriptionParserTest {
 
     @Test
     public void itCanReadDescription() {
-        String input = "1 chocolate bar at 0.85";
+        var input = "1 chocolate bar at 0.85";
 
-        String description = underTest.readDescription(input);
+        var description = underTest.readDescription(input);
 
         assertThat(description, is(equalTo("chocolate bar")));
     }

@@ -2,10 +2,7 @@ package it.twinsbrain.sales.and.taxes.strategies;
 
 import it.twinsbrain.sales.and.taxes.cart.CartItem;
 
-import java.util.Collections;
 import java.util.List;
-
-import static java.util.Arrays.asList;
 
 public class ComposedStrategy implements TaxStrategy {
     private final TaxStrategy current;
@@ -22,6 +19,6 @@ public class ComposedStrategy implements TaxStrategy {
     }
 
     protected List<TaxStrategy> strategies(){
-        return Collections.unmodifiableList(asList(current,next));
+        return List.of(current, next);
     }
 }

@@ -22,7 +22,7 @@ public class QuantityParserTest {
     public void quantityReadOnWellFormedInput() {
         sampleInput = "1 bottle of perfume: 31";
 
-        int quantity = underTest.readQuantity(sampleInput);
+        var quantity = underTest.readQuantity(sampleInput);
 
         assertThat(quantity, is(1));
     }

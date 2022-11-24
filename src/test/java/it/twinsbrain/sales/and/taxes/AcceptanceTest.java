@@ -14,6 +14,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Objects;
 
+import static java.util.Objects.requireNonNull;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.is;
@@ -106,7 +107,7 @@ public class AcceptanceTest {
     }
 
     private String readTextFile(String path) throws IOException, URISyntaxException {
-        Path resolvedPath = Paths.get(Objects.requireNonNull(this.getClass().getResource(path)).toURI());
+        var resolvedPath = Paths.get(requireNonNull(this.getClass().getResource(path)).toURI());
         return Files.readString(resolvedPath);
     }
 

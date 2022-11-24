@@ -18,9 +18,9 @@ public class PriceParserTest {
 
     @Test
     public void itCanReadPrice() {
-        String input = "1 chocolate bar at 0.85";
+        var input = "1 chocolate bar at 0.85";
 
-        BigDecimal price = underTest.readPrice(input);
+        var price = underTest.readPrice(input);
 
         assertThat(price, comparesEqualTo(new BigDecimal("0.85")));
     }

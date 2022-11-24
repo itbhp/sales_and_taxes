@@ -68,11 +68,11 @@ public class StrategyFactoryTest {
                 .withPrice(new BigDecimal("27.99")).build();
 
         strategy = underTest.taxFor(item);
-
         assertThat(strategy, is(instanceOf(ComposedStrategy.class)));
-        ComposedStrategy toVerify = (ComposedStrategy) strategy;
-        assertThat(toVerify.strategies(), hasItem(instanceOf(ImportedTaxStrategy.class)));
-        assertThat(toVerify.strategies(), hasItem(instanceOf(BaseTaxStrategy.class)));
+
+        var composedStrategy = (ComposedStrategy) strategy;
+        assertThat(composedStrategy.strategies(), hasItem(instanceOf(ImportedTaxStrategy.class)));
+        assertThat(composedStrategy.strategies(), hasItem(instanceOf(BaseTaxStrategy.class)));
     }
 
 }

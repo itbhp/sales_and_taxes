@@ -20,7 +20,7 @@ public class CartItemParser {
     }
 
     public int readQuantity(final String input) {
-        String[] parts = input.split(" ");
+        var parts = input.split(" ");
         return Integer.parseInt(parts[0]);
     }
 
@@ -42,8 +42,8 @@ public class CartItemParser {
     }
 
     private String read(final String input, final int groupNumber) {
-        Matcher m = inputPattern.matcher(input);
-        m.find();
-        return m.group(groupNumber);
+        var matcher = inputPattern.matcher(input);
+        matcher.find();
+        return matcher.group(groupNumber);
     }
 }

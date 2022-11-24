@@ -21,9 +21,9 @@ public class BaseTaxStrategyTest {
     @Test
     public void itShouldApplyTenPercentTax() {
 
-        CartItem item = new CartItem.Builder().withPrice(new BigDecimal("1.00")).build();
+        var item = new CartItem.Builder().withPrice(new BigDecimal("1.00")).build();
 
-        CartItem updatedItem = underTest.updateTaxesOn(item);
+        var updatedItem = underTest.updateTaxesOn(item);
 
         assertThat("item visited should not change",
                 item.priceWithTaxes, comparesEqualTo(new BigDecimal("1.00")));
