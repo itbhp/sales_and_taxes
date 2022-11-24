@@ -1,10 +1,9 @@
 plugins {
   kotlin("jvm") version "1.7.21"
+  java
 }
 
 val javaVersion = "17"
-
-apply(plugin = "java")
 
 repositories {
   mavenCentral()
@@ -34,8 +33,8 @@ tasks.test {
   useJUnitPlatform()
 
   reports {
-    junitXml.setEnabled(false)
-    html.setEnabled(true)
+    junitXml.required.set(false)
+    html.required.set(true)
   }
 
   testLogging {
