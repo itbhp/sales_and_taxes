@@ -3,7 +3,6 @@ package it.twinsbrain.sales.and.taxes.cart;
 import it.twinsbrain.sales.and.taxes.strategies.TaxStrategyFactory;
 
 import java.util.List;
-import java.util.function.Function;
 
 import static java.util.Collections.unmodifiableList;
 import static java.util.stream.Collectors.toList;
@@ -22,11 +21,11 @@ public class ShoppingCart {
     }
 
     public Receipt toReceipt() {
-        return new Receipt(items.stream().map(itemWithTaxes()).collect(toList()));
+        return new Receipt(items.stream().map(this::itemWithTaxes).collect(toList()));
     }
 
-    private Function<CartItem, CartItem> itemWithTaxes() {
-        return i -> i.accept(taxStrategyFactory.taxFor(i));
+    private CartItem itemWithTaxes(CartItem cartItem) {
+        return cartItem.accept(taxStrategyFactory.taxFor(cartItem));
     }
 
     protected List<CartItem> items() {

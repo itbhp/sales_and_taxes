@@ -1,18 +1,14 @@
 package it.twinsbrain.sales.and.taxes.cart;
 
-import java.util.Collections;
 import java.util.List;
-
-import static java.util.Arrays.asList;
-import static java.util.Collections.singletonList;
 
 public enum ProductType {
 
-    FOOD(asList("chocolate", "bread")),
-    BOOK(singletonList("book")),
-    MUSIC(asList("cd", "mp3")),
-    MEDICAL(singletonList("pills")),
-    OTHERS(Collections.emptyList());
+    FOOD(List.of("chocolate", "bread")),
+    BOOK(List.of("book")),
+    MUSIC(List.of("cd", "mp3")),
+    MEDICAL(List.of("pills")),
+    OTHERS(List.of());
 
     private final List<String> keywords;
 

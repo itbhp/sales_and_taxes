@@ -39,7 +39,7 @@ public class CartItem {
     }
 
     public <T> CartItem copyWith(Change<T> change){
-        Builder builder = Builder.from(this);
+        var builder = Builder.from(this);
         return change.applyChangeTo(builder).build();
     }
 
